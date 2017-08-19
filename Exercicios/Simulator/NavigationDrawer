@@ -1,0 +1,30 @@
+public class NavigationDrawer extends BaseComponnent {
+  
+  public NavigationDrawer() {
+    super.color_red = 255;
+    super.color_green = 255;
+    super.color_blue = 255;
+    
+    super.this_width = (6*width/10);
+    super.this_height = height;
+    
+    super.this_position_x = 0;
+    super.this_position_y = 0;
+  }
+  
+  public void draw() {
+    stroke(0, 0, 0);
+    fill(color_red, color_green, color_blue);
+    rect(this_position_x, this_position_y, this_width, this_height);
+  }
+  
+  public boolean onClick(int x, int y) {
+    if(super.onClick(x, y)) {
+      print("NavigationDrawer\n");
+      return true;
+    }
+    
+    return false;
+  }
+  
+}
