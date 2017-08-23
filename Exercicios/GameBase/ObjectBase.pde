@@ -10,6 +10,7 @@ public class ObjectBase {
   public int aceleration_y;
   
   public ObjectImage image;
+  public ObjectCollision collision;
   
   public ObjectBase() {
     position_x = 0;
@@ -22,6 +23,7 @@ public class ObjectBase {
     aceleration_y = 0;
     
     image = new ObjectImage();
+    collision = new ObjectCollision();
   }
   
   public void move() {
@@ -37,6 +39,14 @@ public class ObjectBase {
   
   public void draw() {
     image.draw(position_x, position_y);
+  }
+  
+  public boolean isColliding(ObjectBase other_object) {
+    if(other_object == null) {
+      print("null");
+      return false;
+    }
+    return collision.isColliding(position_x, position_y, other_object);
   }
   
 }
