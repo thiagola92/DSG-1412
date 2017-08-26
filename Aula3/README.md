@@ -50,3 +50,9 @@ Se você botar apenas um número, vai se repetir para as outras cores
 Stroke weight:  
 `strokeWeight(pixels);`  
 Expessura do traço.  
+
+## Mouse
+Não foi falado mas foi usado
+
+Variaveis mouseX e mouseY dão o valor da posição atual do mouse dentro da tela.  
+`if(mouseX > 0) { //code }`
