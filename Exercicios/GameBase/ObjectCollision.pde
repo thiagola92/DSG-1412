@@ -3,7 +3,11 @@ public class ObjectCollision {
   public int radius;
   
   public ObjectCollision() {
-    radius = 10;
+    this.radius = 0;
+  }
+  
+  public ObjectCollision(int radius) {
+    this.radius = radius;
   }
   
   public boolean isColliding(int x, int y, ObjectBase other_object) {
