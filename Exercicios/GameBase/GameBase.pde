@@ -13,8 +13,27 @@ void setup() {
 void draw() {
 }
 
-void keyTyped() {
+// Use keyHolding or keyDown instead
+void keyPressed() {
+  keyHolding();
+
+  if(isKeyDown(key) == false) {
+    keyDown();
+    setKeyDown(key, true);
+  }
 }
 
+// Use keyUp instead
 void keyReleased() {
+  keyUp();
+  setKeyDown(key, false);
+}
+
+void keyDown() {
+}
+
+void keyHolding() {
+}
+
+void keyUp() {
 }
