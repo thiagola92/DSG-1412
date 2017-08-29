@@ -18,7 +18,7 @@ public class Keyboard {
     return false;
   }
   
-  void setKeyDown(Character key, Boolean pressed) {
+  public void setKeyDown(Character key, Boolean pressed) {
     keys.put(key, pressed);
   }
   
