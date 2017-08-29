@@ -17,7 +17,7 @@ void setup() {
 void draw() {
 }
 
-// Use keyHolding or keyDown instead
+// Use class Control instead
 void keyPressed() {
   control.keyHolding();
 
@@ -27,7 +27,7 @@ void keyPressed() {
   }
 }
 
-// Use keyUp instead
+// Use class Control instead
 void keyReleased() {
   control.keyUp();
   keyboard.setKeyDown(key, false);
