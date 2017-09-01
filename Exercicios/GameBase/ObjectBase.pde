@@ -13,8 +13,8 @@ public class ObjectBase {
   public ObjectCollision collision;
   
   public ObjectBase() {
-    position_x = 0;
-    position_y = 0;
+    position_x = 10;
+    position_y = 10;
     
     speed_x = 0;
     speed_y = 0;
@@ -38,7 +38,7 @@ public class ObjectBase {
   }
   
   public void draw() {
-    image.draw(position_x, position_y);
+    image.preDraw(this);
   }
   
   public boolean isColliding(ObjectBase other_object) {
@@ -46,7 +46,7 @@ public class ObjectBase {
       print("null");
       return false;
     }
-    return collision.isColliding(position_x, position_y, other_object);
+    return collision.isColliding(this, other_object);
   }
   
 }
