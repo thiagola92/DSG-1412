@@ -31,13 +31,14 @@ public class Control {
   }
 
   public void mouseHolding() {
+    GAME_Spaceship spaceship = (GAME_Spaceship)player;
     
     int time_now = millis();
-    int interval = abs(time_now - player.time_from_last_shot);
+    int interval = abs(time_now - spaceship.time_from_last_shot);
     
     if(interval > 150) {
       objects.addObject(1, new GAME_Shot());
-      player.time_from_last_shot = time_now;
+      spaceship.time_from_last_shot = time_now;
     }
   }
 

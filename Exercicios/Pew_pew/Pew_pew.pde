@@ -5,7 +5,7 @@ Keyboard keyboard;
 Cursor cursor;
 
 ObjectList objects;
-GAME_Spaceship player;
+ObjectBase player;
 
 void setup() {
   size(800, 800);
