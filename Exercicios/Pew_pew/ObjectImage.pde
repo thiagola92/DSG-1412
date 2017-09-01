@@ -3,9 +3,11 @@ public class ObjectImage {
   public void preDraw(ObjectBase object) {
     int fillColor = g.fillColor;
     int strokeColor = g.strokeColor;
+    pushMatrix();
     
     draw(object);
     
+    popMatrix();
     fill(red(fillColor), green(fillColor), blue(fillColor));
     stroke(red(strokeColor), green(strokeColor), blue(strokeColor));
   }

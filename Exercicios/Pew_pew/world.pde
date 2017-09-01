@@ -1,39 +1,23 @@
 void create_world() {
-  player();
+  player = new GAME_Spaceship();
 }
 
-void checkWorld() {
+void updateWorld() {
   createRainBalls();
   
   detectCollision();
   
-  deleteOutOfBounds();
+  deleteObjectOutOfBounds();
+  
+  window.throwObjectInside(player);
 }
 
 ////////////////////////////////////////////////////
 
-void player() {
-  ObjectBase pew_pew = new ObjectBase();
-  pew_pew.collision.radius = 10;
-  pew_pew.image = new ObjectImage() {
-    
-    public void draw(ObjectBase object) {
-      fill(100,100,100);
-      ellipse(object.position_x, object.position_y, 20, 20);
-    }
-    
-  };
-  
-  pew_pew.position_x = 400;
-  pew_pew.position_y = 400;
-  
-  player = pew_pew;
-}
-
 void createRainBalls() {
   ObjectBase ball = new ObjectBase();
   
-  ball.position_x = (int) random(window.width);
+  ball.position_x = (int) random(width);
   ball.speed_y = (int) random(2) + 1;
   
   object_list.add(ball);
@@ -58,11 +42,11 @@ void detectCollision() {
   }
 }
 
-void deleteOutOfBounds() {
+void deleteObjectOutOfBounds() {
   for(int i = 0; i < object_list.size();) {
     ObjectBase object = object_list.get(i);
     
-    if(window.isOutOfBound(object) == true) {
+    if(window.isObjectOutside(object) == true) {
       object_list.remove(object);
       continue;
     }
