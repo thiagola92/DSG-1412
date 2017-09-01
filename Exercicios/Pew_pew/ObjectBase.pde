@@ -1,13 +1,13 @@
 public class ObjectBase {
   
-  public int position_x;
-  public int position_y;
+  public float position_x;
+  public float position_y;
   
-  public int speed_x;
-  public int speed_y;
+  public float speed_x;
+  public float speed_y;
   
-  public int aceleration_x;
-  public int aceleration_y;
+  public float aceleration_x;
+  public float aceleration_y;
   
   public ObjectImage image;
   public ObjectCollision collision;

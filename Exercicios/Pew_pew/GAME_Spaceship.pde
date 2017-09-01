@@ -1,8 +1,14 @@
 public class GAME_Spaceship extends ObjectBase {
   
+  public int time_from_last_shot;
+  
   public GAME_Spaceship() {
+    
+    this.time_from_last_shot = 0;
+    
     this.position_x = width/2;
     this.position_y = height/2;
+    
     this.collision.radius = 20;
     
     this.image = new ObjectImage() {
@@ -11,7 +17,7 @@ public class GAME_Spaceship extends ObjectBase {
         translate(position_x, position_y);
         
         float angle = cursor.angleCompareTo(player);
-        rotate(angle);
+        rotate(angle + PI/2);
         
         ////////////
         

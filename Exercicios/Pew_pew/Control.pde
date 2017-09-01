@@ -1,7 +1,6 @@
 public class Control {
 
   public void keyDown() {
-    print("key " + key + " down\n");
     if(key == 'w') {
       player.speed_y += -2;
     } else if(key == 'a') {
@@ -14,11 +13,9 @@ public class Control {
   }
 
   public void keyHolding() {
-    print("holding key " + key + "\n");
   }
 
   public void keyUp() {
-    print("key " + key + " up\n");
     if(key == 'w') {
       player.speed_y -= -2;
     } else if(key == 'a') {
@@ -31,17 +28,20 @@ public class Control {
   }
 
   public void mouseDown() {
-    print("mouse button down \n");
   }
 
   public void mouseHolding() {
-    print("holding mouse button \n");
     
-    object_list_2.add(new GAME_Shoot());
+    int time_now = millis();
+    int interval = abs(time_now - player.time_from_last_shot);
+    
+    if(interval > 150) {
+      objects.addObject(1, new GAME_Shot());
+      player.time_from_last_shot = time_now;
+    }
   }
 
   public void mouseUp() {
-    print("mouse button up \n");
   }
   
 }

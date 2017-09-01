@@ -4,25 +4,20 @@ Control control;
 Keyboard keyboard;
 Cursor cursor;
 
-ArrayList<ArrayList> object_layer;
-ArrayList<ObjectBase> object_list;
-ArrayList<ObjectBase> object_list_2;
-
-ObjectBase player;
+ObjectList objects;
+GAME_Spaceship player;
 
 void setup() {
   size(800, 800);
+  
   window = new Window();
   control = new Control();
   keyboard = new Keyboard();
   cursor = new Cursor();
+  objects = new ObjectList();
   
-  object_layer = new ArrayList<ArrayList>();
-  object_layer.add(new ArrayList<ObjectBase>());
-  object_layer.add(new ArrayList<ObjectBase>());
-  
-  object_list = new ArrayList<ObjectBase>();
-  object_list_2 = new ArrayList<ObjectBase>();
+  objects.addLayer();
+  objects.addLayer();
   
   create_world();
 }
@@ -71,14 +66,12 @@ void mouseReleased() {
 
 
 void moveObjects() {
-  for(ObjectBase object: object_list) {
-    object.move();
-    object.draw();
-  }
   
-  for(ObjectBase object: object_list_2) {
-    object.move();
-    object.draw();
+  for(ArrayList<ObjectBase> layer: objects.layer_list) {
+    for(ObjectBase object: layer) {
+      object.move();
+      object.draw();
+    }
   }
   
   player.move();
