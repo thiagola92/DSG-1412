@@ -7,8 +7,10 @@ Cursor cursor;
 ObjectList objects;
 ObjectBase player;
 
+Score score;
+
 void setup() {
-  size(800, 800);
+  size(800, 600);
   
   window = new Window();
   control = new Control();
@@ -18,6 +20,8 @@ void setup() {
   
   objects.addLayer();
   objects.addLayer();
+  
+  score = new Score();
   
   create_world();
 }
