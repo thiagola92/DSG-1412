@@ -1,14 +1,10 @@
 public class ObjectBase {
   
-  public ObjectPhysic physic;
-  public ObjectImage image;
-  public ObjectCollision collision;
+  public String class_name = "ObjectBase";
   
-  public ObjectBase() {
-    physic = new ObjectPhysic();
-    image = new ObjectImage();
-    collision = new ObjectCollision();
-  }
+  public ObjectPhysic physic = new ObjectPhysic();
+  public ObjectImage image = new ObjectImage();
+  public ObjectCollision collision = new ObjectCollision();
   
   public void move() {
     physic.move();

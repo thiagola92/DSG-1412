@@ -10,10 +10,6 @@ public class Control {
     } else if(key == 'd') {
       player.physic.speed_x += 2;
     }
-    
-    if(key == 'p') {
-      score.show = !score.show;
-    }
   }
 
   public void keyHolding() {

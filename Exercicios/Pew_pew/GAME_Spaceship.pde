@@ -3,6 +3,7 @@ public class GAME_Spaceship extends ObjectBase {
   public int time_from_last_shot;
   
   public GAME_Spaceship() {
+    super.class_name = "GAME_Spaceship";
     
     this.time_from_last_shot = 0;
     
@@ -41,7 +42,7 @@ public class GAME_Spaceship extends ObjectBase {
       int interval = abs(time_now - time_from_last_shot);
       
       if(interval > 150) {
-        objects_layers.get(1).add(new GAME_Shot());
+        layers.getLayer(1).add(new GAME_Shot());
         time_from_last_shot = time_now;
       }
   }

@@ -4,10 +4,10 @@ Control control;
 Keyboard keyboard;
 Cursor cursor;
 
-ArrayList<ArrayList> objects_layers;
+ObjectList layers;
 ObjectBase player;
 
-Score score;
+CollisionLayers collision_layers;
 
 void setup() {
   size(800, 600);
@@ -16,12 +16,15 @@ void setup() {
   control = new Control();
   keyboard = new Keyboard();
   cursor = new Cursor();
-  objects_layers = new ArrayList<ArrayList>();
+  layers = new ObjectList();
   
-  objects_layers.add(new ArrayList<ObjectBase>());
-  objects_layers.add(new ArrayList<ObjectBase>());
+  layers.createLayer();  // 0) Objects layer
+  layers.createLayer();  // 1) Shot layer
+  layers.createLayer();  // 2) Text layer
   
-  score = new Score();
+  collision_layers = new CollisionLayers();
+  
+  collision_layers.addCollisionBetween(0, 1);
   
   create_world();
 }
@@ -37,7 +40,10 @@ void draw() {
   if(mousePressed)
     control.mouseHolding();
   
+  collision_layers.detectCollision();
+  
   moveObjects();
+  drawObjects();
 }
 
 // Use class Control instead
@@ -71,13 +77,22 @@ void mouseReleased() {
 
 void moveObjects() {
   
-  for(ArrayList<ObjectBase> layer: objects_layers) {
+  for(ArrayList<ObjectBase> layer: layers.getLayers()) {
     for(ObjectBase object: layer) {
       object.move();
-      object.draw();
     }
   }
   
   player.move();
+}
+
+void drawObjects() {
+  
+  for(ArrayList<ObjectBase> layer: layers.getLayers()) {
+    for(ObjectBase object: layer) {
+      object.draw();
+    }
+  }
+  
   player.draw();
 }

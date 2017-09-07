@@ -1,10 +1,6 @@
 public class Cursor {
   
-  HashMap<Integer, Boolean> buttons;
-  
-  public Cursor() {
-    buttons = new HashMap<Integer, Boolean>();
-  }
+  HashMap<Integer, Boolean> buttons = new HashMap<Integer, Boolean>();
   
   public boolean isButtonDown(Integer button) {
     if(buttons.get(button) == null) {

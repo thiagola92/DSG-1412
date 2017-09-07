@@ -1,24 +1,13 @@
 public class ObjectPhysic {
   
-  public float position_x;
-  public float position_y;
+  public float position_x = 10;
+  public float position_y = 10;
   
-  public float speed_x;
-  public float speed_y;
+  public float speed_x = 0;
+  public float speed_y = 0;
   
-  public float aceleration_x;
-  public float aceleration_y;
-  
-  public ObjectPhysic() {
-    position_x = 10;
-    position_y = 10;
-    
-    speed_x = 0;
-    speed_y = 0;
-    
-    aceleration_x = 0;
-    aceleration_y = 0;
-  }
+  public float aceleration_x = 0;
+  public float aceleration_y = 0;
   
   public void move() {
     position_x += speed_x;

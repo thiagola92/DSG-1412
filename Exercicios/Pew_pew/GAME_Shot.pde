@@ -4,6 +4,8 @@ public class GAME_Shot extends ObjectBase {
   public float speed;
   
   public GAME_Shot() {
+    super.class_name = "GAME_Shot";
+    
     this.physic.position_x = player.physic.position_x;
     this.physic.position_y = player.physic.position_y;
     

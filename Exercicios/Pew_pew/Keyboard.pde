@@ -1,10 +1,6 @@
 public class Keyboard {
   
-  HashMap<Character, Boolean> keys;
-  
-  public Keyboard() {
-    keys = new HashMap<Character, Boolean>();
-  }
+  HashMap<Character, Boolean> keys = new HashMap<Character, Boolean>();
   
   public boolean isKeyDown(Character key) {
     if(keys.get(key) == null) {
