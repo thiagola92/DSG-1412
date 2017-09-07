@@ -67,6 +67,7 @@ if(variavel > 10 && variavel < 50) {
   // codigo
 }
 ```
+Esse condicional retorna true se ambas condições são verdadeiras.  
 
 A mesma coisa serve para `||`, mas ele funciona como **or**  
 ```Java
@@ -74,3 +75,4 @@ if(variavel > 10 || variavel < 50) {
   // codigo
 }
 ```
+Esse condicional retorna true se qualquer uma dessas condições é verdadeira.  
