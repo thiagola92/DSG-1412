@@ -7,6 +7,7 @@ void create_world() {
 void updateWorld() {
   generateRandom();
   
+  music.pauseIfNeeded();
   deleteObjectOutOfBounds();
   playerCollision();
   

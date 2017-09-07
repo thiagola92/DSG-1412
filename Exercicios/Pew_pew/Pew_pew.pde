@@ -1,4 +1,3 @@
-
 Window window;
 Control control;
 Keyboard keyboard;
@@ -6,6 +5,10 @@ Cursor cursor;
 
 ObjectList layers;
 ObjectBase player;
+
+Minim minim;
+AudioPlayer audio;
+Music music;
 
 CollisionLayers collision_layers;
 
@@ -24,6 +27,10 @@ void setup() {
   
   collision_layers = new CollisionLayers();
   collision_layers.addCollisionBetween(0, 1);
+  
+  minim = new Minim(this);
+  audio = minim.loadFile("music.mp3", 1024);
+  music = new Music();
   
   create_world();
 }
