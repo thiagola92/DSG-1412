@@ -43,7 +43,7 @@ void playerCollision() {
   for(int i = 0; i < layer.size(); ++i) {
     ObjectBase object = layer.get(i);
     
-    if(object.isColliding(player)) {
+    if(player.isColliding(object) == true || object.isColliding(player) == true) {
       playerCollisionReaction(object);
       
       

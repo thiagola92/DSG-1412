@@ -23,7 +23,6 @@ void setup() {
   layers.createLayer();  // 2) Text layer
   
   collision_layers = new CollisionLayers();
-  
   collision_layers.addCollisionBetween(0, 1);
   
   create_world();
@@ -40,10 +39,10 @@ void draw() {
   if(mousePressed)
     control.mouseHolding();
   
-  collision_layers.detectCollision();
-  
   moveObjects();
   drawObjects();
+  
+  collision_layers.detectCollision();
 }
 
 // Use class Control instead

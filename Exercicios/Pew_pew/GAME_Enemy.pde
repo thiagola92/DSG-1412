@@ -22,11 +22,14 @@ public class GAME_Enemy extends ObjectBase {
         
         translate(object.physic.position_x, object.physic.position_y);
         rotate(enemy.angle);
-        image(loadImage("images/shot.png"), 0, 0, 45, 20);
+        image(loadImage("images/shot.png"), -45/2, -20/2, 45, 20);
       }
       
     };
     
+  }
+  
+  public void destroy() {
   }
   
 }

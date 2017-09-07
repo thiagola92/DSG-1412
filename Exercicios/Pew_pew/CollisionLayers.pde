@@ -24,13 +24,13 @@ public class CollisionLayers {
   
   public void detectCollision() {
     
-    for(Integer i=0; i < layers.size(); ++i) {
-      ArrayList<Integer> layer_to_collide = collision_list.get(i);
+    for(Integer layer=0; layer < layers.size(); ++layer) {
+      ArrayList<Integer> layers_to_collide = collision_list.get(layer);
       
-      if(layer_to_collide == null) break;
+      if(layers_to_collide == null) break;
       
-      for(Integer layer: layer_to_collide)
-        checkCollisionBetween(i, layer);
+      for(Integer layer_to_collide: layers_to_collide)
+        checkCollisionBetween(layer, layer_to_collide);
     }
   }
   
@@ -45,9 +45,12 @@ public class CollisionLayers {
       for(int j = 0; j < second_layer.size(); ++j) {
         ObjectBase second_object = second_layer.get(j);
         
-        if(first_object.isColliding(second_object)) {
+        if(first_object.isColliding(second_object) == true) {
           first_layer.remove(first_object);
           second_layer.remove(second_object);
+          
+          first_object.destroy();
+          second_object.destroy();
           
           GAME_Score score = (GAME_Score)layers.getObject(2, "GAME_Score");
           ++score.damage_done;

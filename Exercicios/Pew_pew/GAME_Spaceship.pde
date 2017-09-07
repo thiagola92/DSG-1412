@@ -15,12 +15,12 @@ public class GAME_Spaceship extends ObjectBase {
     this.image = new ObjectImage() {
       
       public void draw(ObjectBase object) {
-        translate(physic.position_x, physic.position_y);
         
+        translate(physic.position_x, physic.position_y);
         float angle = cursor.angleCompareTo(player);
         rotate(angle + PI/2);
         
-        ////////////
+        ///////////////////////////////////////////
         
         fill(255);
         triangle(-30, 20, 0, 0, -10, 15);
@@ -31,6 +31,7 @@ public class GAME_Spaceship extends ObjectBase {
         fill(0, 150, 150);
         quad(-15, 15, -10, -10, -5, 15, -10, 25);
         quad(15, 15, 10, -10, 5, 15, 10, 25);
+        
       }
       
     };

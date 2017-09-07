@@ -11,7 +11,11 @@ public class ObjectBase {
   }
   
   public void draw() {
-    image.preDraw(this);
+    image.preDraw();
+    image.draw(this);
+    image.afterDraw();
+    
+    if(collision.drawCollision == true) image.drawCollision(this);
   }
   
   public boolean isColliding(ObjectBase other_object) {
@@ -20,6 +24,9 @@ public class ObjectBase {
       return false;
     }
     return collision.isColliding(this, other_object);
+  }
+  
+  public void destroy() {
   }
   
 }
