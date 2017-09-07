@@ -1,5 +1,3 @@
-
-// MELHORAR DEPOIS
 public class Score {
   private PFont font;
   
@@ -20,7 +18,7 @@ public class Score {
   public void showScore() {
     if(show == false)
       return;
-      
+    
     textFont(font);
     textSize(20);
     

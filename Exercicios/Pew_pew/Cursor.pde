@@ -23,8 +23,8 @@ public class Cursor {
   }
   
   public float angleCompareTo(ObjectBase object) {
-        float y = mouseY - object.position_y;
-        float x = mouseX - object.position_x;
+        float y = mouseY - object.physic.position_y;
+        float x = mouseX - object.physic.position_x;
         float angle = atan2(y, x);
         
         return angle;

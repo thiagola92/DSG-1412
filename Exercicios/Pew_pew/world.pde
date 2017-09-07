@@ -15,21 +15,21 @@ void updateWorld() {
 ////////////////////////////////////////////////////
 
 void createRainBalls() {
-  if(objects.getLayer(0).size() > 150) return;
+  if(objects_layers.get(0).size() > 150) return;
   
   ObjectBase ball = new ObjectBase();
   
-  ball.position_x = (int) random(width);
-  ball.speed_y = (int) random(2) + 1;
+  ball.physic.position_x = (int) random(width);
+  ball.physic.speed_y = (int) random(2) + 1;
   
-  objects.addObject(0, ball);
+  objects_layers.get(0).add(ball);
 }
 
 void detectCollision() {
   
   // FAZER UMA FUNCAO ONDE VC DIZ AS CAMADAS Q DEVEM SE COLIDIR
-  for(ArrayList<ObjectBase> layer1: objects.layer_list) {
-    for(ArrayList<ObjectBase> layer2: objects.layer_list) {
+  for(ArrayList<ObjectBase> layer1: objects_layers) {
+    for(ArrayList<ObjectBase> layer2: objects_layers) {
       if(layer1 == layer2) break;
       
       for(int i = 0; i < layer1.size(); ++i) {
@@ -56,7 +56,7 @@ void detectCollision() {
   }
   
   // FAZER UMA FUNCAO PROPRIA PARA VER SE CERTAS CAMADAS ESTÃO COLIDINDO COM O PLAYER
-  ArrayList<ObjectBase> layer = objects.layer_list.get(0);
+  ArrayList<ObjectBase> layer = objects_layers.get(0);
     for(int i = 0; i < layer.size(); ) {
       ObjectBase object = layer.get(i);
       
@@ -76,7 +76,7 @@ void detectCollision() {
 
 void deleteObjectOutOfBounds() {
   
-  for(ArrayList<ObjectBase> layer: objects.layer_list) {
+  for(ArrayList<ObjectBase> layer: objects_layers) {
     for(int i = 0; i < layer.size();) {
       ObjectBase object = layer.get(i);
       

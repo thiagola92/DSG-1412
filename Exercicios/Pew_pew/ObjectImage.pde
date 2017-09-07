@@ -14,7 +14,7 @@ public class ObjectImage {
   
   public void draw(ObjectBase object) {
     fill(0,0,255);
-    ellipse(object.position_x, object.position_y, 20, 20);
+    ellipse(object.physic.position_x, object.physic.position_y, 20, 20);
   }
   
 }

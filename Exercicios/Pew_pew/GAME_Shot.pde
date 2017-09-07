@@ -4,12 +4,12 @@ public class GAME_Shot extends ObjectBase {
   public float speed;
   
   public GAME_Shot() {
-    this.position_x = player.position_x;
-    this.position_y = player.position_y;
+    this.physic.position_x = player.physic.position_x;
+    this.physic.position_y = player.physic.position_y;
     
     speed = 5;
-    this.speed_x = speed * cos(cursor.angleCompareTo(this));
-    this.speed_y = speed * sin(cursor.angleCompareTo(this));
+    this.physic.speed_x = speed * cos(cursor.angleCompareTo(this));
+    this.physic.speed_y = speed * sin(cursor.angleCompareTo(this));
     
     this.collision.radius = 10;
     
@@ -20,7 +20,7 @@ public class GAME_Shot extends ObjectBase {
       public void draw(ObjectBase object) {
         GAME_Shot shot = (GAME_Shot)object;
         
-        translate(position_x, position_y);
+        translate(physic.position_x, physic.position_y);
         rotate(shot.angle + PI/2);
         
         ////////////

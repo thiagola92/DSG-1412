@@ -4,7 +4,7 @@ Control control;
 Keyboard keyboard;
 Cursor cursor;
 
-ObjectList objects;
+ArrayList<ArrayList> objects_layers;
 ObjectBase player;
 
 Score score;
@@ -16,10 +16,10 @@ void setup() {
   control = new Control();
   keyboard = new Keyboard();
   cursor = new Cursor();
-  objects = new ObjectList();
+  objects_layers = new ArrayList<ArrayList>();
   
-  objects.addLayer();
-  objects.addLayer();
+  objects_layers.add(new ArrayList<ObjectBase>());
+  objects_layers.add(new ArrayList<ObjectBase>());
   
   score = new Score();
   
@@ -71,7 +71,7 @@ void mouseReleased() {
 
 void moveObjects() {
   
-  for(ArrayList<ObjectBase> layer: objects.layer_list) {
+  for(ArrayList<ObjectBase> layer: objects_layers) {
     for(ObjectBase object: layer) {
       object.move();
       object.draw();

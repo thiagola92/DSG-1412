@@ -6,15 +6,15 @@ public class GAME_Spaceship extends ObjectBase {
     
     this.time_from_last_shot = 0;
     
-    this.position_x = width/2;
-    this.position_y = height/2;
+    this.physic.position_x = width/2;
+    this.physic.position_y = height/2;
     
     this.collision.radius = 20;
     
     this.image = new ObjectImage() {
       
       public void draw(ObjectBase object) {
-        translate(position_x, position_y);
+        translate(physic.position_x, physic.position_y);
         
         float angle = cursor.angleCompareTo(player);
         rotate(angle + PI/2);
@@ -34,6 +34,16 @@ public class GAME_Spaceship extends ObjectBase {
       
     };
     
+  }
+  
+  public void shoot() {
+      int time_now = millis();
+      int interval = abs(time_now - time_from_last_shot);
+      
+      if(interval > 150) {
+        objects_layers.get(1).add(new GAME_Shot());
+        time_from_last_shot = time_now;
+      }
   }
   
 }
