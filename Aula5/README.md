@@ -31,20 +31,20 @@ Você vai entender melhor essas comparações quando ver `if`.
 
 ## If else && ||
 If é um condicional, usado para decidir se os próximos comandos vão ser rodados.  
-```Java
+```Processing
 if(1+1 == 2) {
 }
 ```
 
 Se tudo dentro do parenteses for verdade, o código dentro das chaves vai rodar.  
-```Java
+```Processing
 if(10*2 > 19) {
   // run this if 10*2 is greater than 19
 }
 ```
 
 Else é usado depois de if, para que se a condição if não acontece o else aconteca  
-```Java
+```Processing
 if(10*2 > 21) {
   // run this if 10*2 is greater than 21
 } else {
@@ -53,7 +53,7 @@ if(10*2 > 21) {
 ```
 
 Em vez de fazer varios if dentro de outros tipo  
-```Java
+```Processing
 if(variavel > 10) {
   if(variavel < 50) {
     // codigo
@@ -62,7 +62,7 @@ if(variavel > 10) {
 ```
 
 Você pode usar `&&` para representar **and**  
-```Java
+```Processing
 if(variavel > 10 && variavel < 50) {
   // codigo
 }
@@ -70,7 +70,7 @@ if(variavel > 10 && variavel < 50) {
 Esse condicional retorna true se ambas condições são verdadeiras.  
 
 A mesma coisa serve para `||`, mas ele funciona como **or**  
-```Java
+```Processing
 if(variavel > 10 || variavel < 50) {
   // codigo
 }
@@ -78,8 +78,8 @@ if(variavel > 10 || variavel < 50) {
 Esse condicional retorna true se qualquer uma dessas condições é verdadeira.  
 
 ## Mouse
-É possivel pegar a posição do mouse com as variáveis mouseX e mouseY.  
-```Java
+É possivel pegar a posição do mouse com as variáveis `mouseX` e `mouseY`.  
+```Processing
 int x=0;
 int y=0;
 void draw() {
@@ -88,3 +88,4 @@ void draw() {
     ellipse(x,y,30,30);
 }
 ```
+
