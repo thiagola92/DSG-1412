@@ -76,3 +76,15 @@ if(variavel > 10 || variavel < 50) {
 }
 ```
 Esse condicional retorna true se qualquer uma dessas condições é verdadeira.  
+
+## Mouse
+É possivel pegar a posição do mouse com as variáveis mouseX e mouseY.  
+```Java
+int x=0;
+int y=0;
+void draw() {
+    x=mouseX;
+    y=mouseY;
+    ellipse(x,y,30,30);
+}
+```
