@@ -16,8 +16,6 @@ public class ObjectList {
   
   public ObjectBase getObject(int layer, String object_name) {
     for(ObjectBase object: getLayer(layer)) {
-      println(object.class_name);
-      println(object_name);
       if(object.class_name.equals(object_name))
         return object;
     }

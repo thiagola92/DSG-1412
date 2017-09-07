@@ -30,7 +30,7 @@ void setup() {
 }
 
 void draw() {
-  background(0,200,0);
+  background(0,0,0);
   
   updateWorld();
   

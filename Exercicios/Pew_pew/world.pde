@@ -5,7 +5,7 @@ void create_world() {
 }
 
 void updateWorld() {
-  createRainBalls();
+  generateRandom();
   
   deleteObjectOutOfBounds();
   playerCollision();
@@ -15,15 +15,11 @@ void updateWorld() {
 
 ////////////////////////////////////////////////////
 
-void createRainBalls() {
-  if(layers.getLayer(0).size() > 150) return;
+void generateRandom() {
+  if(layers.getLayer(0).size() > 15) return;
   
-  ObjectBase ball = new ObjectBase();
-  
-  ball.physic.position_x = (int) random(width);
-  ball.physic.speed_y = (int) random(2) + 1;
-  
-  layers.getLayer(0).add(ball);
+  GAME_Enemy enemy = new GAME_Enemy();
+  layers.getLayer(0).add(enemy);
 }
 
 void deleteObjectOutOfBounds() {
@@ -48,13 +44,21 @@ void playerCollision() {
     ObjectBase object = layer.get(i);
     
     if(object.isColliding(player)) {
+      playerCollisionReaction(object);
+      
+      
       layer.remove(object);
-      
-      GAME_Score score = (GAME_Score)layers.getObject(2, "GAME_Score");
-      ++score.damage_received;
-      
       --i;
       continue;
     }
   }
+}
+
+void playerCollisionReaction(ObjectBase object) {
+  
+  if(object.class_name.equals("ObjectBase")) {
+    GAME_Score score = (GAME_Score)layers.getObject(2, "GAME_Score");
+    ++score.damage_received;
+  }
+  
 }
