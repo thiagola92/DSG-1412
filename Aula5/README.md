@@ -52,3 +52,25 @@ if(10*2 > 21) {
 }
 ```
 
+Em vez de fazer varios if dentro de outros tipo  
+```Java
+if(variavel > 10) {
+  if(variavel < 50) {
+    // codigo
+  }
+}
+```
+
+Você pode usar `&&` para representar **and**  
+```Java
+if(variavel > 10 && variavel < 50) {
+  // codigo
+}
+```
+
+A mesma coisa serve para `||`, mas ele funciona como **or**  
+```Java
+if(variavel > 10 || variavel < 50) {
+  // codigo
+}
+```
