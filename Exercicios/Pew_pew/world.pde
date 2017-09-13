@@ -19,8 +19,16 @@ void updateWorld() {
 void generateRandom() {
   if(layers.getLayer(0).size() > 15) return;
   
-  GAME_Enemy enemy = new GAME_Enemy();
-  layers.getLayer(0).add(enemy);
+  int i = (int)random(20);
+  
+  if(i == 0) {
+    GAME_Heart enemy = new GAME_Heart();
+    layers.getLayer(0).add(enemy);
+  } else {
+    GAME_Enemy enemy = new GAME_Enemy();
+    layers.getLayer(0).add(enemy);
+  }
+    
 }
 
 void deleteObjectOutOfBounds() {

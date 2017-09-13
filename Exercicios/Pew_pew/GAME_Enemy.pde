@@ -6,7 +6,7 @@ public class GAME_Enemy extends ObjectBase {
   
     this.physic.position_x = (int) random(width);
     
-    int speed = (int) random(3) + 2;
+    int speed = (int) random(4) + 2;
     
     float y = player.physic.position_y - this.physic.position_y;
     float x = player.physic.position_x - this.physic.position_x;
