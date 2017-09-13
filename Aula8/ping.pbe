@@ -1,0 +1,59 @@
+
+int posX = 400;
+int posY = 300;
+int veloX = -3;
+int veloY = 3;
+int rectLargura = 30;
+int rectAltura = 120;
+
+boolean colidindo = false;
+
+void setup() {
+  size(800, 600);
+  rectMode(CENTER);
+  noStroke();
+}
+
+void draw() {
+  background(0, 255, 0);
+  rect(posX, posY, 30, 30);
+  posX = posX + veloX;
+  posY = posY + veloY;
+  // colisao na parede em baixo
+  if(posY >= height - 15) {
+    veloY = -veloY;
+  }
+  // colisao no pad da computador
+  rect(10 + 30/2, posY, 30, 120);
+  if(posX <= 10+15+15+15) {
+    veloX = -veloX;
+  }
+  // colisao em cima
+  if(posY <= 15) {
+    veloY = - veloY;
+  }
+  // pad do jogador
+  rect(mouseX, mouseY, rectLargura, rectAltura);
+  
+  // colisao no jogador
+  if(posX >= mouseX - rectLargura/2 - 15 &&
+      posX <= mouseX + rectLargura/2 + 15 &&
+      posY >= mouseY - rectAltura/2 - 15 &&
+      posY <= mouseY + rectAltura/2 + 15 &&
+      colidindo == false) {
+    veloX = -veloX;
+    veloY = -veloY;
+    colidindo = true;
+  } else {
+    colidindo = false;
+  }
+  
+}
+
+void mousePressed() {
+  if(mouseButton == RIGHT) {
+    int temporario = rectLargura;
+    rectLargura = rectAltura;
+    rectAltura = temporario;
+  }
+}
