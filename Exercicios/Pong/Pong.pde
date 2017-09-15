@@ -10,6 +10,7 @@ int posX;
 int posY;
 int veloX = -5;
 int veloY = 5;
+boolean esta_colidindo = false;
 
 void setup() {
   size(800, 600);
@@ -37,6 +38,8 @@ void draw() {
     illusion_pong();
   else if(pong_game == 7)
     blind_pong();
+  else if(pong_game == 8)
+    rotate_pong();
 }
 
 void resetar(int n) {
@@ -44,6 +47,7 @@ void resetar(int n) {
   posY = height/2;
   veloX = -3;
   veloY = 3;
+  esta_colidindo = false;
   
   pong_game = n;
 }
@@ -62,4 +66,6 @@ void keyPressed() {
     resetar(6);
   else if(key == '7')
     resetar(7);
+  else if(key == '8')
+    resetar(8);
 }

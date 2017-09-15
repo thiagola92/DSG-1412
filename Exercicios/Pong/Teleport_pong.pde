@@ -38,8 +38,14 @@ void teleport_pong() {
   // colisao no jogador
   if(posX >= width-10-15-15-15 &&
       posY >= mouseY - 60 - 15 &&
-      posY <= mouseY + 60 + 15) {
-    veloX = -veloX;
+      posY <= mouseY + 60 + 15 &&
+      posX <= width-10+15) {
+    if(esta_colidindo == false) {
+      veloX = -veloX;
+      esta_colidindo = true;
+    }
+  } else {
+    esta_colidindo = false;
   }
 }
 
