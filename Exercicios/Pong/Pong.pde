@@ -1,10 +1,13 @@
 import ddf.minim.*;
 import ddf.minim.ugens.*;
+import processing.serial.*;
+import cc.arduino.*;
 
 Minim minim;
 AudioOutput out;
+Arduino arduino;
 
-int pong_game = 1;
+int pong_game = 9;
 
 int posX;
 int posY;
@@ -19,8 +22,19 @@ void setup() {
   rectMode(CENTER);
   noStroke();
   
-  minim = new Minim(this);
-  out = minim.getLineOut();
+  try {
+    minim = new Minim(this);
+    out = minim.getLineOut();
+  } catch (Exception e) {
+    println("Não foi detectado saida de audio");
+  }
+  
+  try {
+    arduino = new Arduino(this, Arduino.list()[0], 57600);
+    arduino.pinMode(3, Arduino.OUTPUT);
+  } catch (Exception e) {
+    println("Não foi detectado arduino na porta 0");
+  }
 }
 
 void draw() {
@@ -40,6 +54,8 @@ void draw() {
     blind_pong();
   else if(pong_game == 8)
     rotate_pong();
+  else if(pong_game == 9)
+    sensor_pong();
 }
 
 void resetar(int n) {
@@ -68,4 +84,6 @@ void keyPressed() {
     resetar(7);
   else if(key == '8')
     resetar(8);
+  else if(key == '9')
+    resetar(9);
 }

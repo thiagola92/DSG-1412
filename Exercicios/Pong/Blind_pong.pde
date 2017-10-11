@@ -48,6 +48,9 @@ void blind_pong() {
 }
 
 void tocar_som() {  
+  if(out == null)
+    return;
+    
   out.setTempo( 120 );
   out.playNote( 0, 0.2, posY );
 }
