@@ -31,7 +31,9 @@ void setup() {
   
   try {
     arduino = new Arduino(this, Arduino.list()[0], 57600);
-    arduino.pinMode(3, Arduino.OUTPUT);
+    for(int i = 13; i > 3; i--) {
+      arduino.pinMode(i, Arduino.OUTPUT);
+    }
   } catch (Exception e) {
     println("Não foi detectado arduino na porta 0");
   }
