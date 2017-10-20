@@ -7,7 +7,7 @@ Minim minim;
 AudioOutput out;
 Arduino arduino;
 
-int pong_game = 9;
+int pong_game = 0;
 
 int posX;
 int posY;
@@ -58,6 +58,8 @@ void draw() {
     rotate_pong();
   else if(pong_game == 9)
     sensor_pong();
+  else if(pong_game == 0)
+    sensor2_pong();
 }
 
 void resetar(int n) {
@@ -88,4 +90,6 @@ void keyPressed() {
     resetar(8);
   else if(key == '9')
     resetar(9);
+  else if(key == '0')
+    resetar(0);
 }

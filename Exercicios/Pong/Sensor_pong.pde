@@ -5,7 +5,7 @@ boolean downHolding = false;
 
 void sensor_pong() {
   background(0, 255, 0);
-  rect(posX, posY, 30, 30);
+  //rect(posX, posY, 30, 30);
   posX = posX + veloX;
   posY = posY + veloY;
   
@@ -33,7 +33,7 @@ void sensor_pong() {
   light_position();
   
   // pad do jogador
-  rect(width - 10 - 15, bar_position, 30, 120);
+  //rect(width - 10 - 15, bar_position, 30, 120);
   
   // colisao no jogador
   if(posX >= width-10-15-15-15 &&
