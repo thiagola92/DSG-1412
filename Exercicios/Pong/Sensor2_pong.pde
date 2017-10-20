@@ -5,6 +5,8 @@ float min = 1023;
 
 int contador_frames5 = 0;
 
+int particao_da_tela = 60;
+
 void sensor2_pong() {
   background(0, 255, 0);
   rect(posX, posY, 30, 30);
@@ -29,7 +31,7 @@ void sensor2_pong() {
   
   // carrega a posição do jogador
   position_y2();
-  int bar_position = positionY2 * 120 + 60;
+  int bar_position = positionY2 * height/particao_da_tela + 60;
   
   // pad do jogador
   rect(width - 10 - 15, bar_position, 30, 120);
@@ -55,12 +57,14 @@ void position_y2() {
   // Descobrindo o novo valor máximo e minimo que o sensor consegue chegar
   if(sensorAnswer > max) 
     max = sensorAnswer;
-  if(sensorAnswer < min)
+  if(sensorAnswer < min && sensorAnswer != 0)
     min = sensorAnswer;
+  println("max: " + max);
+  println("min: " + min);
     
-  // Se não passou 30 frames, não precisa atualizar a posição da barra
+  // Se não passou 150/particao_da_tela frames, não precisa atualizar a posição da barra
   contador_frames5++;
-  if(contador_frames5 < 30)
+  if(contador_frames5 < 150/particao_da_tela)
     return;
   else
     contador_frames5 = 0;
@@ -70,7 +74,7 @@ void position_y2() {
   float diferenca = max-min;
   if(sensorAnswer < min + diferenca/3 && positionY2 > 0)
     positionY2--;
-  else if(sensorAnswer > min + 2*diferenca/3 && positionY2 < 4)
+  else if(sensorAnswer > min + 2*diferenca/3 && positionY2 < particao_da_tela-1)
     positionY2++;
     
   println("positionY2: " + positionY2);
