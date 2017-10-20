@@ -33,6 +33,12 @@ void rotate1() {
     veloY = - veloY;
   }
   
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    mouseY = posicao_da_barra_usando_sensor;
+  }
+  
   // pad do jogador
   rect(width - 10 - 15, mouseY, 30, 120);
   
@@ -71,6 +77,16 @@ void rotate2() {
   // colisao na esquerda
   if(posX <= 15) {
     veloX = - veloX;
+  }
+  
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    //println("posicao_da_barra_usando_sensor: " + posicao_da_barra_usando_sensor);
+    
+    int nova_posicao_da_barra_usando_sensor = (int)(posicao_da_barra_usando_sensor/0.75);
+    mouseX = nova_posicao_da_barra_usando_sensor;
+    println("mouseX: " + mouseX);
   }
   
   // pad do jogador
@@ -113,6 +129,12 @@ void rotate3() {
     veloY = - veloY;
   }
   
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    mouseY = posicao_da_barra_usando_sensor;
+  }
+  
   // pad do jogador
   rect(10 + 30/2, mouseY, 30, 120);
   
@@ -151,6 +173,16 @@ void rotate4() {
   // colisao na esquerda
   if(posX <= 15) {
     veloX = - veloX;
+  }
+  
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    //println("posicao_da_barra_usando_sensor: " + posicao_da_barra_usando_sensor);
+    
+    int nova_posicao_da_barra_usando_sensor = (int)(posicao_da_barra_usando_sensor/0.75);
+    mouseX = nova_posicao_da_barra_usando_sensor;
+    println("mouseX: " + mouseX);
   }
   
   // pad do jogador

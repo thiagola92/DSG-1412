@@ -48,6 +48,12 @@ void illusion_pong() {
     veloY = - veloY;
   }
   
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    mouseY = posicao_da_barra_usando_sensor;
+  }
+  
   // colisao em cima
   for(int i=0; i < ilusoes; ++i) {
     if(ilusaoPosY[i] <= 15) {

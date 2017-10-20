@@ -7,7 +7,8 @@ Minim minim;
 AudioOutput out;
 Arduino arduino;
 
-int pong_game = 0;
+int pong_game = 8;
+boolean usar_sensor = true;
 
 int posX;
 int posY;
@@ -65,8 +66,8 @@ void draw() {
 void resetar(int n) {
   posX = width/2;
   posY = height/2;
-  veloX = -3;
-  veloY = 3;
+  veloX = -5;
+  veloY = 5;
   esta_colidindo = false;
   
   pong_game = n;
@@ -92,4 +93,46 @@ void keyPressed() {
     resetar(9);
   else if(key == '0')
     resetar(0);
+}
+
+int sensor_positionY = 0;
+int posicao_da_barra_usando_sensor = 0;
+
+int max_sensorY = 0;
+int min_sensorY = 1023;
+
+int contador_frames_para_o_sensor = 0;
+int particionar_tela_em_x_pedacos = 30;
+
+void sensorY() {
+  int sensorAnswer = arduino.analogRead(0);
+  //println("sensorAnswer: " + sensorAnswer);
+  
+  // Descobrindo o novo valor máximo e minimo que o sensor consegue chegar
+  if(sensorAnswer > max_sensorY) 
+    max_sensorY = sensorAnswer;
+  if(sensorAnswer < min_sensorY && sensorAnswer != 0)
+    min_sensorY = sensorAnswer;
+  //println("max_sensorY: " + max_sensorY);
+  //println("min_sensorY: " + min_sensorY);
+    
+  // Se não passou 150/particionar_tela_em_x_pedacos frames, não precisa atualizar a posição da barra
+  // Isso é para que não atualize a posição da barra rápido demais, se quiser que altere mais rapido diminua o valor 150
+  contador_frames_para_o_sensor++;
+  if(contador_frames_para_o_sensor < 150/particionar_tela_em_x_pedacos)
+    return;
+  else
+    contador_frames_para_o_sensor = 0;
+    
+  // Se o sensor estiver no 1/3 mais alto, subir
+  // Se o sensor estiver no 1/3 mais alto, descer
+  float diferenca = max-min;
+  if(sensorAnswer < min + diferenca/3 && sensor_positionY > 0)
+    sensor_positionY--;
+  else if(sensorAnswer > min + 2*diferenca/3 && sensor_positionY < particionar_tela_em_x_pedacos)
+    sensor_positionY++;
+  //println("sensor_positionY: " + sensor_positionY);
+  
+  posicao_da_barra_usando_sensor = sensor_positionY * (height-60)/particionar_tela_em_x_pedacos + 60;
+  //println("posicao_da_barra_usando_sensor: " + posicao_da_barra_usando_sensor);
 }

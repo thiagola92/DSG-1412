@@ -32,6 +32,12 @@ void motion_pong() {
     veloY = - veloY;
   }
   
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    mouseY = posicao_da_barra_usando_sensor;
+  }
+  
   // pad do jogador
   rect(width - 10 - 15, mouseY, 30, 120);
   
