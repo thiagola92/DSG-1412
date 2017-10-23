@@ -1,7 +1,3 @@
-int positionY = 0;
-
-boolean upHolding = false;
-boolean downHolding = false;
 
 void sensor_pong() {
   background(0, 255, 0);
@@ -25,20 +21,22 @@ void sensor_pong() {
     veloY = - veloY;
   }
   
-  // carrega a posição do jogador
-  position_y();
-  int bar_position = positionY * 120 + 60;
+  // se for para usar o sensor como controle
+  if(usar_sensor == true) {
+    sensorY();
+    mouseY = posicao_da_barra_usando_sensor;
+  }
   
   // luz do arduino
   light_position();
   
   // pad do jogador
-  //rect(width - 10 - 15, bar_position, 30, 120);
+  rect(width - 10 - 15, mouseY, 30, 120);
   
   // colisao no jogador
   if(posX >= width-10-15-15-15 &&
-      posY >= bar_position - 60 - 15 &&
-      posY <= bar_position + 60 + 15 &&
+      posY >= mouseY - 60 - 15 &&
+      posY <= mouseY + 60 + 15 &&
       posX <= width-10+15) {
     if(esta_colidindo == false) {
       veloX = -veloX;
@@ -49,33 +47,15 @@ void sensor_pong() {
   }
 }
 
-void position_y() {
-  int upPressed = arduino.analogRead(0);
-  int downPressed = arduino.analogRead(1);
-  
-  //println("upPressed: " + upPressed);
-  //println("downPressed: " + downPressed);
-  
-  if(upPressed > 0 && upHolding == false && positionY > 0) {
-    positionY -= 1;
-    upHolding = true;
-  } else if(upPressed == 0 && upHolding == true) {
-    upHolding = false;
-  }
-  
-  if(downPressed > 0 && downHolding == false && positionY < 4) {
-    positionY += 1;
-    downHolding = true;
-  } else if(downPressed == 0 && downHolding == true) {
-    downHolding = false;
-  }
-  
-  //println("positionY: " + positionY);
-}
+int numero_de_leds = 5;
 
 void light_position() {
+  
+   int particao_da_posicao = sensor_positionY/(particionar_tela_em_x_pedacos/numero_de_leds);
+   println(particao_da_posicao);
+  
   for(int i = 13; i > 8; i--) {
-    if(positionY + i == 13)
+    if(particao_da_posicao + i == 13)
       arduino.digitalWrite(i, Arduino.HIGH);
     else
       arduino.digitalWrite(i, Arduino.LOW);
