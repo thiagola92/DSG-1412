@@ -25,7 +25,6 @@ void draw() {
   updateBackground();
   collideTargets();
   
-  
   player[0].destination.x = mouseX;
   
   // remove

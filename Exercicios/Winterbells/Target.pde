@@ -1,19 +1,19 @@
-int targetPerScreen = 4;
+int targetPerScreen = 5;
 
 public class Target {
   
-  PVector position;
+  int radius = 15;
+  int gravity = 4;
   
-  int radius;
+  PVector position;
   
   public Target(int spawnY) {
     
     int spawnPointX = (int)random(width);
     int spawnPointY = (int)-spawnY;
     
-    position = new PVector(spawnPointX, spawnPointY);
+    this.position = new PVector(spawnPointX, spawnPointY);
     
-    radius = 15;
   }
   
   public void draw() {
@@ -25,7 +25,7 @@ public class Target {
     if(this.position.y > height) {
       respawn();
     } else {
-      this.position.y += 1;
+      this.position.y += this.gravity;
     }
   }
   

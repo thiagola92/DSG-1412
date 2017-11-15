@@ -1,16 +1,18 @@
 public class Background {
   
   int backgroundElements = 100;
+  
   PVector[] element;
   
   public Background() {
-    element = new PVector[backgroundElements];
     
-    for(int i = 0; i < element.length; i++) {
+    this.element = new PVector[backgroundElements];
+    
+    for(int i = 0; i < this.element.length; i++) {
       int spawnPointX = (int)random(width);
       int spawnPointY = (int)random(height);
       
-      element[i] = new PVector(spawnPointX, -spawnPointY);
+      this.element[i] = new PVector(spawnPointX, -spawnPointY);
     }
     
   }

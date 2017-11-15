@@ -1,17 +1,23 @@
 public class Player {
   
+  int radius = 15;
+  int gravity = 3;
+  int jumpPower = 4;
+  
+  boolean playing;
+  
   PVector position;
   PVector velocity;
   PVector destination;
   
-  int radius;
-  
   public Player() {
-    this.position = new PVector(width/2, height - 30);
-    this.velocity = new PVector(15, 0);
-    this.destination = new PVector(0, 0);
     
-    this.radius = 15;
+    this.playing = false;
+    
+    this.position = new PVector(width/2, height - 30);
+    this.velocity = new PVector(15, this.gravity);
+    this.destination = new PVector(0, height - 30);
+    
   }
   
   public void draw() {
@@ -26,6 +32,16 @@ public class Player {
     else if(destination.x < position.x && position.x - destination.x > velocity.x)
       position.x -= velocity.x;
       
+    if(destination.y > position.y && destination.y - position.y > velocity.y)
+      position.y += velocity.y;
+    else if(destination.y < position.y && position.y - destination.y > velocity.y)
+      position.y -= velocity.y;
+      
+    if(position.x >= destination.x - velocity.x && position.x <= destination.x + velocity.x) {
+      if(position.y >= destination.y - velocity.y && position.y <= destination.y + velocity.y)
+        onDestination();
+    }
+    
   }
   
   public boolean collision(int x, int y, int radius) {
@@ -42,6 +58,28 @@ public class Player {
   }
   
   public void jump() {
+    int jump = -(height/this.jumpPower);
+    
+    if(position.y + jump < height/2)
+      destination.y = height/2;
+    else
+      destination.y += jump;
+      
+    playing = true;
+  }
+  
+  public void fall() {
+    if(playing) {
+      destination.y = height + 30;
+    }
+  }
+  
+  public void onDestination() {
+    if(position.y > height) {
+      println("GAME OVER");
+    } else {
+      fall();
+    }
   }
   
 }
