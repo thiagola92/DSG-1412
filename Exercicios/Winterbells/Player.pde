@@ -1,8 +1,9 @@
 public class Player {
   
   int radius = 15;
-  int gravity = 3;
-  int jumpPower = 4;
+  int gravity = 1;
+  int jumpSpeed = 5;
+  int jumpDistance = 8; // The lower, the bigger distance
   
   boolean playing;
   
@@ -47,8 +48,8 @@ public class Player {
   public boolean collision(int x, int y, int radius) {
     ellipse(x, y, 2*radius, 2*radius);
     
-    float distanceX = abs(this.position.x - x);
-    float distanceY = abs(this.position.y - y);
+    float distanceX = abs(position.x - x);
+    float distanceY = abs(position.y - y);
     float distanceTotal = sqrt(distanceX * distanceX + distanceY * distanceY);
     
     if(this.radius + radius >= distanceTotal)
@@ -58,24 +59,29 @@ public class Player {
   }
   
   public void jump() {
-    int jump = -(height/this.jumpPower);
+    velocity.y = jumpSpeed;
     
-    if(position.y + jump < height/2)
-      destination.y = height/2;
-    else
-      destination.y += jump;
+    int jump = (int)-(height/jumpDistance);
+    
+    if(position.y + jump < 0) {
+      destination.y = 0;
+    } else {
+      destination.y = position.y + jump;
+    }
       
     playing = true;
   }
   
   public void fall() {
+    velocity.y = gravity;
+    
     if(playing) {
       destination.y = height + 30;
     }
   }
   
   public void onDestination() {
-    if(position.y > height) {
+    if(position.y > height + radius) {
       println("GAME OVER");
     } else {
       fall();

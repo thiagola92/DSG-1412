@@ -1,9 +1,7 @@
-int targetPerScreen = 5;
-
 public class Target {
   
   int radius = 15;
-  int gravity = 4;
+  int gravity = 2;
   
   PVector position;
   
@@ -18,31 +16,31 @@ public class Target {
   
   public void draw() {
     fill(255);
-    ellipse(this.position.x, this.position.y, 2*radius, 2*radius);
+    ellipse(position.x, position.y, 2*radius, 2*radius);
   }
   
   public void update() {
-    if(this.position.y > height) {
+    if(this.position.y > height + radius) {
       respawn();
     } else {
-      this.position.y += this.gravity;
+      position.y += gravity;
     }
   }
   
   public void respawn() {
-      int distanceBetweenTargets = height/(targetPerScreen * numberOfPlayers);
+      int distanceBetweenTargets = height/(targetsPerScreen * numberOfPlayers);
       
       int spawnPointX = (int)random(width);
       int spawnPointY = (int)-distanceBetweenTargets;
       
-      this.position.x = spawnPointX;
-      this.position.y = spawnPointY;
+      position.x = spawnPointX;
+      position.y = spawnPointY;
   }
   
 }
 
 public void createTargets() {
-  int distanceBetweenTargets = height/(targetPerScreen * numberOfPlayers);
+  int distanceBetweenTargets = height/(targetsPerScreen * numberOfPlayers);
   
   for(int i = 0; i < target.length; i++) {
     target[i] = new Target(i*distanceBetweenTargets);
@@ -67,6 +65,7 @@ public void collideTargets() {
       if(player[i].collision((int)target[j].position.x, (int)target[j].position.y, target[j].radius)) {
         target[j].respawn();
         player[i].jump();
+        score[i].increment();
       }
     }
   }

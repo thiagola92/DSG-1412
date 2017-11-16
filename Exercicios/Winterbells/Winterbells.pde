@@ -1,8 +1,11 @@
 int numberOfPlayers = 1;
-int numberOfTargets = 10;
+int numberOfTargets = 20;
+int targetsPerScreen = 5;
 
 Player[] player;
 Target[] target;
+Score[] score;
+Stage stage;
 Background background;
 
 void setup() {
@@ -11,10 +14,13 @@ void setup() {
   
   player = new Player[numberOfPlayers];
   target = new Target[numberOfTargets*numberOfPlayers];
+  score = new Score[numberOfPlayers];
+  stage = new Stage();
   background = new Background();
   
   createPlayers();
   createTargets();
+  createScores();
 }
 
 void draw() {
@@ -22,15 +28,12 @@ void draw() {
   
   updatePlayers();
   updateTargets();
+  updateScores();
+  updateStage();
   updateBackground();
+  
   collideTargets();
   
   player[0].destination.x = mouseX;
-  
-  // remove
-  if(player[0].collision(mouseX, mouseY, 15))
-    fill(255,0,0);
-  else
-    fill(255);
   
 }
