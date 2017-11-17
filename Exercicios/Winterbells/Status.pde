@@ -15,6 +15,7 @@ public class Score {
   public void draw() {
     fill(255);
     textFont(scoreFont);
+    textAlign(LEFT);
     text("Player :" + points, 0, position);
   }
   

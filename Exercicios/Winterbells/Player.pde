@@ -3,9 +3,10 @@ public class Player {
   int radius = 15;
   int gravity = 1;
   int jumpSpeed = 5;
-  int jumpDistance = 8; // The lower, the bigger distance
+  int jumpDistance = 10; // bigger == less distance
   
-  boolean playing;
+  boolean playing = false;;
+  boolean alive = true;
   
   PVector position;
   PVector velocity;
@@ -13,10 +14,8 @@ public class Player {
   
   public Player() {
     
-    this.playing = false;
-    
     this.position = new PVector(width/2, height - 30);
-    this.velocity = new PVector(15, this.gravity);
+    this.velocity = new PVector(width*0.01875, this.gravity);
     this.destination = new PVector(0, height - 30);
     
   }
@@ -81,11 +80,15 @@ public class Player {
   }
   
   public void onDestination() {
+    
     if(position.y > height + radius) {
       println("GAME OVER");
+      alive = false;
+      checkGameover();
     } else {
       fall();
     }
+    
   }
   
 }
@@ -107,4 +110,15 @@ void updatePlayers() {
     }
   }
   
+}
+
+void checkGameover() {
+  
+  for(int i = 0; i < player.length; i++) {
+    if(player[i].alive == true) {
+      return;
+    }
+  }
+  
+  gameover = true;
 }
