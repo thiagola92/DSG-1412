@@ -1,6 +1,9 @@
 int numberOfPlayers = 1;
+
 int numberOfTargets = 20;
-int distanceBetweenTargetsOnScreen = 15; // bigger == less distance
+int heightDistanceBetweenTargets = 10; // bigger == less distance
+int widthDistanceBetweenTargets = 50;
+
 boolean gameover = false;
 
 Player[] player;
@@ -10,8 +13,8 @@ Stage stage;
 Background background;
 
 void setup() {
-  fullScreen();
-  //size(800, 600);
+  //fullScreen();
+  size(800, 600);
   mouseX = width/2;
   
   player = new Player[numberOfPlayers];

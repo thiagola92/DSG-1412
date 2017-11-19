@@ -5,12 +5,8 @@ public class Target {
 
   PVector position;
 
-  public Target(int spawnY) {
-
-    int spawnPointX = (int)random(width);
-    int spawnPointY = (int)-spawnY;
-
-    this.position = new PVector(spawnPointX, spawnPointY);
+  public Target(int spawnX, int spawnY) {
+    this.position = new PVector(spawnX, spawnY);
   }
 
   public void draw() {
@@ -27,7 +23,7 @@ public class Target {
   }
 
   public void respawn() {
-    int distanceBetweenTargets = height/(distanceBetweenTargetsOnScreen * numberOfPlayers);
+    int distanceBetweenTargets = height/(heightDistanceBetweenTargets * numberOfPlayers);
 
     int spawnPointX = (int)random(width);
     int spawnPointY = (int)-distanceBetweenTargets;
@@ -36,6 +32,13 @@ public class Target {
     for (int i = 0; i < target.length; i++) {
       if (target[i].position.y < farest) {
         farest = (int)target[i].position.y;
+
+        spawnPointX = (int)random(target[i].position.x - widthDistanceBetweenTargets, target[i].position.x + widthDistanceBetweenTargets);
+
+        if (spawnPointX < 0)
+          spawnPointX = 0;
+        else if (spawnPointX > width)
+          spawnPointX = width;
       }
     }
 
@@ -47,10 +50,18 @@ public class Target {
 }
 
 public void createTargets() {
-  int distanceBetweenTargets = height/(distanceBetweenTargetsOnScreen * numberOfPlayers);
+  int spawnPointX = (int)random(0, width);
+  int spawnPointY = height/(heightDistanceBetweenTargets * numberOfPlayers);
 
   for (int i = 0; i < target.length; i++) {
-    target[i] = new Target(i*distanceBetweenTargets);
+    spawnPointX = (int)random(spawnPointX - widthDistanceBetweenTargets, spawnPointX + widthDistanceBetweenTargets);
+
+    if (spawnPointX < 0)
+      spawnPointX = 0;
+    else if (spawnPointX > width)
+      spawnPointX = width;
+
+    target[i] = new Target(spawnPointX, -i*spawnPointY);
   }
 }
 

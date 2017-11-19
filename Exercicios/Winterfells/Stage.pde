@@ -26,7 +26,7 @@ public class Stage {
 
       level = 3;
     } else if (level == 3 && bestScore >= 40) {
-      distanceBetweenTargetsOnScreenUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 4;
     } else if (level == 4 && bestScore >= 50) {
@@ -38,7 +38,7 @@ public class Stage {
 
       level = 6;
     } else if (level == 6 && bestScore >= 70) {
-      distanceBetweenTargetsOnScreenUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 7;
     } else if (level == 7 && bestScore >= 80) {
@@ -50,7 +50,7 @@ public class Stage {
 
       level = 9;
     } else if (level == 9 && bestScore >= 100) {
-      distanceBetweenTargetsOnScreenUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 10;
     } else if (level == 10 && bestScore >= 110) {
@@ -62,7 +62,7 @@ public class Stage {
 
       level = 12;
     } else if (level == 12 && bestScore >= 130) {
-      distanceBetweenTargetsOnScreenUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 13;
     } else if (level == 13 && bestScore >= 140) {
@@ -74,7 +74,7 @@ public class Stage {
 
       level = 15;
     } else if (level == 15 && bestScore >= 160) {
-      distanceBetweenTargetsOnScreenUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 16;
     }
@@ -100,7 +100,7 @@ public class Stage {
     }
   }
 
-  public void distanceBetweenTargetsOnScreenUp() {
+  public void heightDistanceBetweenTargetsUp() {
 
     int lowerJump = 255;
     for (int i = 0; i < player.length; i++) {
@@ -108,8 +108,12 @@ public class Stage {
         lowerJump = player[i].jumpDistance;
     }
 
-    if (distanceBetweenTargetsOnScreen > lowerJump)
-      distanceBetweenTargetsOnScreen -= 1;
+    if (heightDistanceBetweenTargets > lowerJump)
+      heightDistanceBetweenTargets -= 1;
+  }
+  
+  public void widthDistanceBetweenTargetsUp() {
+    widthDistanceBetweenTargets += 10;
   }
 }
 

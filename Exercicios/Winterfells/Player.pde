@@ -3,7 +3,7 @@ public class Player {
   int radius = 15;
   int gravity = 1;
   int jumpSpeed = 5;
-  int jumpDistance = 10; // bigger == less distance
+  int jumpDistance = 5; // bigger == less distance
   
   boolean playing = false;;
   boolean alive = true;
