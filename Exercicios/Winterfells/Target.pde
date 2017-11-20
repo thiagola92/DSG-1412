@@ -23,7 +23,7 @@ public class Target {
   }
 
   public void respawn() {
-    int distanceBetweenTargets = height/(heightDistanceBetweenTargets * numberOfPlayers);
+    float distanceBetweenTargets = height*(heightDistanceBetweenTargets / numberOfPlayers);
 
     int spawnPointX = (int)random(width);
     int spawnPointY = (int)-distanceBetweenTargets;
@@ -50,8 +50,10 @@ public class Target {
 }
 
 public void createTargets() {
+  float distanceBetweenTargets = height*(heightDistanceBetweenTargets / numberOfPlayers);
+  
   int spawnPointX = (int)random(0, width);
-  int spawnPointY = height/(heightDistanceBetweenTargets * numberOfPlayers);
+  int spawnPointY = (int)distanceBetweenTargets;
 
   for (int i = 0; i < target.length; i++) {
     spawnPointX = (int)random(spawnPointX - widthDistanceBetweenTargets, spawnPointX + widthDistanceBetweenTargets);

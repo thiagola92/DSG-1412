@@ -3,7 +3,8 @@ public class Player {
   int radius = 15;
   int gravity = 1;
   int jumpSpeed = 5;
-  int jumpDistance = 5; // bigger == less distance
+  float jumpDistance = 0.1; // percentage of screen
+  float movSpeed = 0.01;  // percentage of screen
   
   boolean playing = false;;
   boolean alive = true;
@@ -15,7 +16,7 @@ public class Player {
   public Player() {
     
     this.position = new PVector(width/2, height - 30);
-    this.velocity = new PVector(width*0.01875, this.gravity);
+    this.velocity = new PVector(width*movSpeed, this.gravity);
     this.destination = new PVector(0, height - 30);
     
   }
@@ -60,7 +61,7 @@ public class Player {
   public void jump() {
     velocity.y = jumpSpeed;
     
-    int jump = (int)-(height/jumpDistance);
+    int jump = (int)-(height*jumpDistance);
     
     if(position.y + jump < 0) {
       destination.y = 0;
@@ -120,5 +121,5 @@ void checkGameover() {
     }
   }
   
-  gameover = true;
+  state = STATE.GAMEOVER;
 }

@@ -1,16 +1,17 @@
 int numberOfPlayers = 1;
 
 int numberOfTargets = 20;
-int heightDistanceBetweenTargets = 10; // bigger == less distance
 int widthDistanceBetweenTargets = 50;
+float heightDistanceBetweenTargets = 0.20; // percentage of screen
 
-boolean gameover = false;
+STATE state = STATE.MENU;
 
 Player[] player;
 Target[] target;
 Score[] score;
 Stage stage;
 Background background;
+Menu menu;
 
 void setup() {
   //fullScreen();
@@ -22,6 +23,7 @@ void setup() {
   score = new Score[numberOfPlayers];
   stage = new Stage();
   background = new Background();
+  menu = new Menu();
   
   createPlayers();
   createTargets();
@@ -29,28 +31,11 @@ void setup() {
 }
 
 void draw() {
-  if(gameover == false) {
+  if(state == STATE.MENU) {
+    menu();
+  } if(state == STATE.PLAYING) {
     playing();
-  } else {
+  } else if(state == STATE.GAMEOVER) {
     gameover();
   }
-}
-
-void playing() {
-  background(0);
-  
-  updatePlayers();
-  updateTargets();
-  updateScores();
-  updateBackground();
-  updateLevel();
-  
-  collideTargets();
-  
-  player[0].destination.x = mouseX;
-  
-}
-
-void gameover() {
-  background(0);
 }

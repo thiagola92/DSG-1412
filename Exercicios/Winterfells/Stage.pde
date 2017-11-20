@@ -105,7 +105,7 @@ public class Stage {
     int lowerJump = 255;
     for (int i = 0; i < player.length; i++) {
       if (player[i].jumpDistance < lowerJump)
-        lowerJump = player[i].jumpDistance;
+        lowerJump = (int)player[i].jumpDistance;
     }
 
     if (heightDistanceBetweenTargets > lowerJump)
