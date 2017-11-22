@@ -1,5 +1,5 @@
 enum STATE {
-  MENU, PLAYING, GAMEOVER;
+  MENU, PLAYING;
 }
 
 void playing() {
@@ -17,16 +17,10 @@ void playing() {
   
 }
 
-void gameover() {
-  background(0);
-  
-}
-
 void menu() {
   background(0);
   
   menu.drawStartButton();
-  menu.drawConfigButton();
   
   menu.onClick();
 }

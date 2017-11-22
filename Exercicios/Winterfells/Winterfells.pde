@@ -1,7 +1,7 @@
 int numberOfPlayers = 1;
 
 int numberOfTargets = 20;
-int widthDistanceBetweenTargets = 50;
+int widthDistanceBetweenTargets = width;
 float heightDistanceBetweenTargets = 0.20; // percentage of screen
 
 STATE state = STATE.MENU;
@@ -35,7 +35,5 @@ void draw() {
     menu();
   } if(state == STATE.PLAYING) {
     playing();
-  } else if(state == STATE.GAMEOVER) {
-    gameover();
   }
 }

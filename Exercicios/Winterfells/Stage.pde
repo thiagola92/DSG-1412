@@ -109,7 +109,7 @@ public class Stage {
     }
 
     if (heightDistanceBetweenTargets > lowerJump)
-      heightDistanceBetweenTargets -= 1;
+      heightDistanceBetweenTargets -= 0.01;
   }
   
   public void widthDistanceBetweenTargetsUp() {

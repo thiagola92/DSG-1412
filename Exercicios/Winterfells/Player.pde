@@ -121,5 +121,5 @@ void checkGameover() {
     }
   }
   
-  state = STATE.GAMEOVER;
+  state = STATE.MENU;
 }
