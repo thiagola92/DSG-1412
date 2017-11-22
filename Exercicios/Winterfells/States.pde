@@ -5,15 +5,15 @@ enum STATE {
 void playing() {
   background(0);
   
+  updateBackground();
   updatePlayers();
   updateTargets();
   updateScores();
-  updateBackground();
   updateLevel();
   
   collideTargets();
   
-  player[0].destination.x = mouseX;
+  player.get(0).destination.x = mouseX;
   
 }
 

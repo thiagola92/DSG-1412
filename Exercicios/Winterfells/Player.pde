@@ -96,30 +96,46 @@ public class Player {
 
 void createPlayers() {
   
-  for(int i = 0; i < player.length; i++) {
-    player[i] = new Player();
+  for(int i = 0; i < numberOfPlayers; i++) {
+    player.add(new Player());
   }
   
 }
 
 void updatePlayers() {
   
-  for(int i = 0; i < player.length; i++) {
-    if(player[i] != null) {
-      player[i].update();
-      player[i].draw();
-    }
+  for(int i = 0; i < player.size(); i++) {
+      player.get(i).update();
+      player.get(i).draw();
   }
   
 }
 
 void checkGameover() {
   
-  for(int i = 0; i < player.length; i++) {
-    if(player[i].alive == true) {
+  for(int i = 0; i < player.size(); i++) {
+    if(player.get(i).alive == true) {
       return;
     }
   }
   
   state = STATE.MENU;
+}
+
+String getHighScore() {
+  
+  if(player == null)
+    return "";
+  
+  int highScore = 0;
+  int playerName = 0;
+  
+  for(int i = 0; i < player.size(); i++) {
+    if(score.get(i).points > highScore) {
+      highScore = score.get(i).points;
+      playerName = i;
+    }
+  }
+  
+  return "Player " + playerName + ": " + highScore;
 }

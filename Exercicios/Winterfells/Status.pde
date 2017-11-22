@@ -28,13 +28,13 @@ public class Score {
 }
 
 public void updateScores() {
-  for(int i = 0; i < score.length; i++) {
-    score[i].draw();
+  for(int i = 0; i < score.size(); i++) {
+    score.get(i).draw();
   }
 }
 
 public void createScores() {
-  for(int i = 0; i < score.length; i++) {
-    score[i] = new Score(i);
+  for(int i = 0; i < numberOfPlayers; i++) {
+    score.add(new Score(i));
   }
 }

@@ -6,11 +6,11 @@ public class Connection {
   int port = 17000;
   
   OscP5 osc;
-  NetAddress[] netAddress;
+  ArrayList<NetAddress> netAddress;
 
   void Connection() {
     osc = new OscP5(this, port);
-    netAddress = new NetAddress[numberOfPlayers];
+    netAddress = new ArrayList<NetAddress>();
   }
   
 }

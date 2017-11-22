@@ -1,14 +1,14 @@
-int numberOfPlayers = 1;
+int numberOfPlayers;
 
-int numberOfTargets = 20;
-int widthDistanceBetweenTargets = width;
-float heightDistanceBetweenTargets = 0.20; // percentage of screen
+int numberOfTargets;
+int widthDistanceBetweenTargets;
+float heightDistanceBetweenTargets; // percentage of screen
 
 STATE state = STATE.MENU;
 
-Player[] player;
-Target[] target;
-Score[] score;
+ArrayList<Player> player;
+ArrayList<Target> target;
+ArrayList<Score> score;
 Stage stage;
 Background background;
 Menu menu;
@@ -18,16 +18,7 @@ void setup() {
   size(800, 600);
   mouseX = width/2;
   
-  player = new Player[numberOfPlayers];
-  target = new Target[numberOfTargets*numberOfPlayers];
-  score = new Score[numberOfPlayers];
-  stage = new Stage();
-  background = new Background();
   menu = new Menu();
-  
-  createPlayers();
-  createTargets();
-  createScores();
 }
 
 void draw() {
@@ -36,4 +27,23 @@ void draw() {
   } if(state == STATE.PLAYING) {
     playing();
   }
+}
+
+void restart() {
+  numberOfPlayers = 1;
+
+  numberOfTargets = 20;
+  widthDistanceBetweenTargets = width;
+  heightDistanceBetweenTargets = 0.20; // percentage of screen
+  
+  player = new ArrayList<Player>();
+  target = new ArrayList<Target>();
+  score = new ArrayList<Score>();
+  stage = new Stage();
+  background = new Background();
+ 
+  
+  createPlayers();
+  createTargets();
+  createScores();
 }

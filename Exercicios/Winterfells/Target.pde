@@ -55,7 +55,7 @@ public void createTargets() {
   int spawnPointX = (int)random(width);
   int spawnPointY = (int)-distanceBetweenTargets;
 
-  for (int i = 0; i < target.length; i++) {
+  for (int i = 0; i < numberOfTargets; i++) {
     //spawnPointX = (int)random(spawnPointX - widthDistanceBetweenTargets, spawnPointX + widthDistanceBetweenTargets);
     
     spawnPointX = (int)random(width);
@@ -65,28 +65,26 @@ public void createTargets() {
     //else if (spawnPointX > width)
     //  spawnPointX = width;
 
-    target[i] = new Target(spawnPointX, i*spawnPointY);
+    target.add(new Target(spawnPointX, i*spawnPointY));
   }
 }
 
 public void updateTargets() {
 
-  for (int i = 0; i < target.length; i++) {
-    if (target[i] != null) {
-      target[i].update();
-      target[i].draw();
-    }
+  for (int i = 0; i < target.size(); i++) {
+      target.get(i).update();
+      target.get(i).draw();
   }
 }
 
 public void collideTargets() {
 
-  for (int i = 0; i < player.length; i++) {
-    for (int j = 0; j < target.length; j++) {
-      if (player[i].collision((int)target[j].position.x, (int)target[j].position.y, target[j].radius)) {
-        target[j].respawn();
-        player[i].jump();
-        score[i].increment();
+  for (int i = 0; i < player.size(); i++) {
+    for (int j = 0; j < target.size(); j++) {
+      if (player.get(i).collision((int)target.get(j).position.x, (int)target.get(j).position.y, target.get(j).radius)) {
+        target.get(j).respawn();
+        player.get(i).jump();
+        score.get(i).increment();
       }
     }
   }

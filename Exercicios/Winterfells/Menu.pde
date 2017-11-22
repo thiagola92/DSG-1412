@@ -4,6 +4,13 @@ public class Menu {
   float StartButtonHeight = height*0.065;
 
   public void drawStartButton() {
+    
+    fill(255);
+    
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text(getHighScore(), width/2, 50);
+    
     fill(200);
 
     rectMode(CENTER);
@@ -30,7 +37,4 @@ public class Menu {
     }
   }
   
-  public void restart() {
-    
-  }
 }
