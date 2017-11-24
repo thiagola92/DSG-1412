@@ -33,7 +33,7 @@ void draw() {
 }
 
 void restart() {
-  numberOfPlayers = 1;
+  numberOfPlayers = 2;
 
   numberOfTargets = 20;
   widthDistanceBetweenTargets = width;
@@ -48,8 +48,8 @@ void restart() {
   stage = new Stage();
   background = new Background();
  
-  createConnections();
   createPlayers();
+  createConnections();
   createTargets();
   createScores();
 }
