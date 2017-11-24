@@ -1,19 +1,34 @@
 import netP5.*;
 import oscP5.*;
 
+OscP5 osc;
+
 public class Connection {
   
-  int port = 17000;
-  
-  OscP5 osc;
-  ArrayList<NetAddress> netAddress;
+  NetAddress netAddress;
 
-  void Connection() {
-    osc = new OscP5(this, port);
-    netAddress = new ArrayList<NetAddress>();
+  Connection(String ip) {
+    println("==============> criando conexao " + ip);
+    
+    netAddress = new NetAddress(ip, port);
   }
+}
+
+void createConnections() {
+  println("==============> criando conexoes");
   
+  createOsc();
+
+  connection.add(new Connection("192.168.0.21"));
+}
+
+void createOsc() {
+  if(osc != null)
+    osc.dispose();
+  
+  osc = new OscP5(this, port);
 }
 
 void oscEvent(OscMessage theOscMessage) {
+  println("==============> recebeu mensagem");
 }

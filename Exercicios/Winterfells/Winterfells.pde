@@ -4,11 +4,14 @@ int numberOfTargets;
 int widthDistanceBetweenTargets;
 float heightDistanceBetweenTargets; // percentage of screen
 
+int port;
+
 STATE state = STATE.MENU;
 
 ArrayList<Player> player;
 ArrayList<Target> target;
 ArrayList<Score> score;
+ArrayList<Connection> connection;
 Stage stage;
 Background background;
 Menu menu;
@@ -36,13 +39,16 @@ void restart() {
   widthDistanceBetweenTargets = width;
   heightDistanceBetweenTargets = 0.20; // percentage of screen
   
+  port = 17000;
+  
   player = new ArrayList<Player>();
   target = new ArrayList<Target>();
   score = new ArrayList<Score>();
+  connection = new ArrayList<Connection>();
   stage = new Stage();
   background = new Background();
  
-  
+  createConnections();
   createPlayers();
   createTargets();
   createScores();
