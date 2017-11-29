@@ -6,6 +6,8 @@ public class Player {
   float jumpDistance = 0.1; // percentage of screen
   float movSpeed = 0.01;  // percentage of screen
   
+  color rgb;
+  
   boolean playing = false;;
   boolean alive = true;
   
@@ -22,7 +24,7 @@ public class Player {
   }
   
   public void draw() {
-    fill(0, 200, 255);
+    fill(rgb);
     ellipse(position.x, position.y, 2*radius, 2*radius);
   }
   
@@ -92,12 +94,33 @@ public class Player {
     
   }
   
+  public void setDirection (float acc) {
+   
+    if (acc <= -2) { //left
+      
+      if (destination.x - 1 > 0)
+        destination.x -= 10;
+      
+    } else if (acc >= 2) { //right
+      
+      if (destination.x + 1 < width)
+        destination.x += 10;
+        
+    } else {
+      
+      destination.x = position.x;
+      
+    }
+    
+  }
+  
 }
 
 void createPlayers() {
   
   for(int i = 0; i < numberOfPlayers; i++) {
     player.add(new Player());
+    player.get(i).rgb = playerColors.available[i];
   }
   
 }

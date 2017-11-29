@@ -13,8 +13,6 @@ void playing() {
   
   collideTargets();
   
-  player.get(0).destination.x = mouseX;
-  
 }
 
 void menu() {

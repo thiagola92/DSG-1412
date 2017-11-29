@@ -15,12 +15,14 @@ ArrayList<Connection> connection;
 Stage stage;
 Background background;
 Menu menu;
+Color playerColors;
 
 void setup() {
   //fullScreen();
   size(800, 600);
   mouseX = width/2;
   
+  playerColors = new Color();
   menu = new Menu();
 }
 
