@@ -18,7 +18,6 @@ void createOsc() {
 }
 
 void oscEvent(OscMessage theOscMessage) {
-  //println(theOscMessage.address());
   
   if(theOscMessage.checkAddrPattern("start")) {
     joinGame(theOscMessage.address());

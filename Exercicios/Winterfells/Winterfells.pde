@@ -35,7 +35,7 @@ void draw() {
 }
 
 void restart() {
-  numberOfPlayers = 2;
+  numberOfPlayers = 3;
 
   numberOfTargets = 20;
   widthDistanceBetweenTargets = width;

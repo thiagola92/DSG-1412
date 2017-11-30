@@ -63,7 +63,10 @@ void createOsc() {
 void oscEvent(OscMessage theOscMessage) {
 
   if (theOscMessage.checkAddrPattern("join")) {
-
+    
+    if(connection.size() >= player.size())
+      return;
+      
     Connection c = new Connection(theOscMessage.address());
     connection.add(c);
     
