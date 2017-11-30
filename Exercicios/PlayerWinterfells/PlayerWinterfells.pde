@@ -30,7 +30,6 @@ void draw() {
   
   status.draw();
   
-  
 }
 
 void onAccelerometerEvent(float x, float y, float z) {

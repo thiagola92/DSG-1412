@@ -10,7 +10,8 @@ public class Target {
   }
 
   public void draw() {
-    fill(255);
+    fill(colors.target);
+    
     ellipse(position.x, position.y, 2*radius, 2*radius);
   }
 

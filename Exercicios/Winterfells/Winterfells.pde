@@ -15,14 +15,14 @@ ArrayList<NetAddress> connection;
 Stage stage;
 Background background;
 Menu menu;
-Color playerColors;
+Color colors;
 
 void setup() {
   //fullScreen();
   size(800, 600);
   mouseX = width/2;
   
-  playerColors = new Color();
+  colors = new Color();
   menu = new Menu();
 }
 

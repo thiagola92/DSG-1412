@@ -18,7 +18,8 @@ public class Background {
   }
   
   public void draw() {
-    fill(255);
+    fill(colors.elementBackground);
+    
     for(int i = 0; i < element.length; i++) {
       ellipse(element[i].x, element[i].y, 10, 10);
     }

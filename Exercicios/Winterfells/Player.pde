@@ -120,7 +120,7 @@ void createPlayers() {
   
   for(int i = 0; i < numberOfPlayers; i++) {
     player.add(new Player());
-    player.get(i).rgb = playerColors.available[i];
+    player.get(i).rgb = colors.player[i];
   }
   
 }

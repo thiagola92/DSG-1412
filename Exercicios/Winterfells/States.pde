@@ -3,7 +3,7 @@ enum STATE {
 }
 
 void playing() {
-  background(0);
+  background(colors.gameBackground);
   
   updateBackground();
   updatePlayers();
@@ -16,7 +16,7 @@ void playing() {
 }
 
 void menu() {
-  background(0);
+  background(colors.menuBackground);
   
   menu.drawStartButton();
   
