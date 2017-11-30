@@ -2,8 +2,6 @@ import netP5.*;
 import oscP5.*;
 import ketai.sensors.*;
 
-OscP5 osc;
-NetAddress netAddress;
 KetaiSensor accelerometer;
 Status status;
 
@@ -17,6 +15,7 @@ void setup() {
   netAddress = new NetAddress(computerIP, port);
   accelerometer = new KetaiSensor(this);
   status = new Status();
+  
   accelerometer.start();
   
   orientation(LANDSCAPE);  // This last
