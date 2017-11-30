@@ -85,7 +85,6 @@ public class Player {
   public void onDestination() {
     
     if(position.y > height + radius) {
-      println("GAME OVER");
       alive = false;
       checkGameover();
     } else {
