@@ -11,8 +11,8 @@ String computerIP = "192.168.0.10";
 void setup() {
   fullScreen();
   
-  osc = new OscP5(this, port);
-  netAddress = new NetAddress(computerIP, port);
+  createConnection();
+  
   accelerometer = new KetaiSensor(this);
   status = new Status();
   
