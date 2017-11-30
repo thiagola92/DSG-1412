@@ -9,7 +9,7 @@ View view;
 
 int playerId = -1;
 int port = 17000;
-String computerIP = "192.168.0.185";
+String computerIP = "192.168.0.10";
 float accY;
 
 void setup() {

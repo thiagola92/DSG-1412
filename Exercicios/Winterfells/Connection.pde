@@ -22,7 +22,7 @@ void createConnections() {
   message.add(1);
   osc.send(message, connection.get(0).netAddress);
   
-  connection.add(new Connection("192.168.0.184"));
+  connection.add(new Connection("192.168.0.15"));
   message = new OscMessage("playerId");
   message.add(0);
   osc.send(message, connection.get(1).netAddress);
