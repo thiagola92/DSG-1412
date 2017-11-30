@@ -25,20 +25,12 @@ void draw() {
   background(0);
   
   OscMessage message = new OscMessage("movement");
-  message.setAddrPattern("/player" + status.playerId + "/");
+  message.setAddrPattern("player" + status.playerId);
   message.add(status.accelerometerY);
   osc.send(message, netAddress);
   
   status.draw();
   
-  
-}
-
-void oscEvent(OscMessage theOscMessage) {
-  
-  if(theOscMessage.checkTypetag("i")) {
-    status.playerId = theOscMessage.get(0).intValue();
-  }
   
 }
 

@@ -32,7 +32,7 @@ void createOsc() {
 void oscEvent(OscMessage theOscMessage) {
 
   for (int i = 0; i < player.size(); i++) {
-    if (theOscMessage.checkAddrPattern("/player" + i + "/")) {
+    if (theOscMessage.checkAddrPattern("player" + i)) {
       player.get(i).setDirection(theOscMessage.get(0).floatValue());
       println(i, theOscMessage.get(0).floatValue());
     }
