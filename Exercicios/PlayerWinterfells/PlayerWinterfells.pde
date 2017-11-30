@@ -5,12 +5,10 @@ import ketai.sensors.*;
 OscP5 osc;
 NetAddress netAddress;
 KetaiSensor accelerometer;
-View view;
+Status status;
 
-int playerId = -1;
 int port = 17000;
 String computerIP = "192.168.0.10";
-float accY;
 
 void setup() {
   fullScreen();
@@ -18,20 +16,21 @@ void setup() {
   osc = new OscP5(this, port);
   netAddress = new NetAddress(computerIP, port);
   accelerometer = new KetaiSensor(this);
-  view = new View();
+  status = new Status();
   accelerometer.start();
-  orientation(LANDSCAPE);
+  
+  orientation(LANDSCAPE);  // This last
 }
 
 void draw() {
   background(0);
   
   OscMessage message = new OscMessage("movement");
-  message.setAddrPattern("/player" + playerId + "/");
-  message.add(accY);
+  message.setAddrPattern("/player" + status.playerId + "/");
+  message.add(status.accelerometerY);
   osc.send(message, netAddress);
   
-  view.draw();
+  status.draw();
   
   
 }
@@ -39,11 +38,11 @@ void draw() {
 void oscEvent(OscMessage theOscMessage) {
   
   if(theOscMessage.checkTypetag("i")) {
-    playerId = theOscMessage.get(0).intValue();
+    status.playerId = theOscMessage.get(0).intValue();
   }
   
 }
 
 void onAccelerometerEvent(float x, float y, float z) {
-  accY = y;
+  status.accelerometerY = y;
 }
