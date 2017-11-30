@@ -11,7 +11,7 @@ STATE state = STATE.MENU;
 ArrayList<Player> player;
 ArrayList<Target> target;
 ArrayList<Score> score;
-ArrayList<Connection> connection;
+ArrayList<NetAddress> connection;
 Stage stage;
 Background background;
 Menu menu;
@@ -46,7 +46,7 @@ void restart() {
   player = new ArrayList<Player>();
   target = new ArrayList<Target>();
   score = new ArrayList<Score>();
-  connection = new ArrayList<Connection>();
+  connection = new ArrayList<NetAddress>();
   stage = new Stage();
   background = new Background();
  
