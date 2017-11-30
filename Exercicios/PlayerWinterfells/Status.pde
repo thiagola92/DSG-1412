@@ -7,7 +7,10 @@ public class Status {
 
   void draw () {
     textSize(40);
+    
     text("Player: " + playerId, 0, 40);    
     text(accelerometerY + "", 0, 80);
+    
+    text(warning, 0, 120);
   }
 }

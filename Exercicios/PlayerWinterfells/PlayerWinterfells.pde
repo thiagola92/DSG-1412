@@ -24,8 +24,7 @@ void setup() {
 void draw() {
   background(0);
   
-  OscMessage message = new OscMessage("movement");
-  message.setAddrPattern("player" + status.playerId);
+  OscMessage message = new OscMessage("player" + status.playerId);
   message.add(status.accelerometerY);
   osc.send(message, netAddress);
   
