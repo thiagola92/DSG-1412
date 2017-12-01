@@ -5,6 +5,7 @@ public class Player {
   int jumpSpeed = 5;
   float jumpDistance = 0.1; // percentage of screen
   float movSpeed = 0.01;  // percentage of screen
+  float sensitivity = 2.0;
   
   color rgb;
   
@@ -95,14 +96,14 @@ public class Player {
     
   }
   
-  public void setDirection (float acc) {
-   
-    if (acc <= -2) { //left
+  public void setDirection (float accelerometer) {
+    
+    if (accelerometer <= -sensitivity) { //left
       
       if (destination.x - 1 > 0)
         destination.x -= 10;
       
-    } else if (acc >= 2) { //right
+    } else if (accelerometer >= sensitivity) { //right
       
       if (destination.x + 1 < width)
         destination.x += 10;

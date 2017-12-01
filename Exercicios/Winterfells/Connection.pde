@@ -12,10 +12,11 @@ public class Connection {
 
     netAddress = new NetAddress(ip, port);
 
-    OscMessage message = new OscMessage("id");
+    OscMessage message = new OscMessage("info");
     message.add(connection.size());
+    message.add(player.get(connection.size()).rgb);
     osc.send(message, netAddress);
-  }
+}
 
   public boolean compareIp(OscMessage theOscMessage) {
     String address = theOscMessage.address().split("/")[1];
