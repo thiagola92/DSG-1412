@@ -8,7 +8,7 @@ public class Player {
   
   color rgb;
   
-  boolean playing = false;;
+  boolean playing = false;
   boolean alive = true;
   
   PVector position;
@@ -17,7 +17,9 @@ public class Player {
   
   public Player() {
     
-    this.position = new PVector(width/2, height - 30);
+    float spawnX = width/(1 + numberOfPlayers) * (player.size() + 1);  
+    
+    this.position = new PVector(spawnX, height - 30);
     this.velocity = new PVector(width*movSpeed, this.gravity);
     this.destination = new PVector(0, height - 30);
     

@@ -20,25 +20,26 @@ Color colors;
 void setup() {
   //fullScreen();
   size(800, 600);
-  mouseX = width/2;
   
   colors = new Color();
   menu = new Menu();
 }
 
 void draw() {
+  
   if(state == STATE.MENU) {
     menu();
   } if(state == STATE.PLAYING) {
     playing();
   }
+  
 }
 
 void restart() {
-  numberOfPlayers = 3;
+  numberOfPlayers = 2;
 
   numberOfTargets = 20;
-  widthDistanceBetweenTargets = width;
+  widthDistanceBetweenTargets = 100; // pixel of screen, use width for all the screen
   heightDistanceBetweenTargets = 0.20; // percentage of screen
   
   port = 17000;

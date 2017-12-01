@@ -16,21 +16,6 @@ public class Stage {
 
     if (level == 0 && bestScore >= 10) {
       targetsGravityUp();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
-      numberOfTargetsDown();
 
       level = 1;
     } else if (level == 1 && bestScore >= 20) {
@@ -38,8 +23,13 @@ public class Stage {
 
       level = 2;
     } else if (level == 2 && bestScore >= 30) {
+      numberOfTargetsDown();
 
       level = 3;
+    } else if (level == 3 && bestScore >= 40) {
+      heightDistanceBetweenTargetsUp();
+
+      level = 4;
     } else if (level == 3 && bestScore >= 40) {
       heightDistanceBetweenTargetsUp();
 
@@ -75,7 +65,7 @@ public class Stage {
   }
   
   public void widthDistanceBetweenTargetsUp() {
-    widthDistanceBetweenTargets += 10;
+    widthDistanceBetweenTargets += 100;
   }
   
   public void numberOfTargetsDown() {
