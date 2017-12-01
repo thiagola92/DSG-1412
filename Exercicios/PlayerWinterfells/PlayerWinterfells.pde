@@ -11,7 +11,7 @@ String computerIP = "192.168.0.10";
 void setup() {
   fullScreen();
   
-  createConnection();
+  createOsc();
   
   accelerometer = new KetaiSensor(this);
   status = new Status();
@@ -24,9 +24,11 @@ void setup() {
 void draw() {
   background(0);
   
-  OscMessage message = new OscMessage("update");
-  message.add(status.accelerometerY);
-  osc.send(message, netAddress);
+  if(netAddress != null) {
+    OscMessage message = new OscMessage("update");
+    message.add(status.accelerometerY);
+    osc.send(message, netAddress);
+  }
   
   status.draw();
   

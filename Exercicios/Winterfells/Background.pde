@@ -1,6 +1,6 @@
 public class Background {
   
-  int backgroundElements = 100;
+  int backgroundElements = 200;
   
   PVector[] element;
   

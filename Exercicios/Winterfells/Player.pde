@@ -21,7 +21,7 @@ public class Player {
     
     this.position = new PVector(spawnX, height - 30);
     this.velocity = new PVector(width*movSpeed, this.gravity);
-    this.destination = new PVector(0, height - 30);
+    this.destination = new PVector(spawnX, height - 30);
     
   }
   
