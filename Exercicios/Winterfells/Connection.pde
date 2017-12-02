@@ -18,7 +18,7 @@ public class Connection {
     message.add(index);
     message.add(player.get(index).rgb);
     osc.send(message, netAddress);
-}
+  }
 
   public boolean compareIp(OscMessage theOscMessage) {
     String address = theOscMessage.address().split("/")[1];
@@ -45,6 +45,7 @@ void createConnections() {
     netAddress = new NetAddress("192.168.0." + i, port);
     message = new OscMessage("start");
     osc.send(message, netAddress);
+    delay(1);
   }
 }
 
@@ -56,8 +57,8 @@ void createOsc() {
 }
 
 void oscEvent(OscMessage theOscMessage) {
-  //if (!theOscMessage.checkAddrPattern("update"))
-  //  println(theOscMessage.address(), theOscMessage.addrPattern());
+  if (!theOscMessage.checkAddrPattern("update") && !theOscMessage.checkAddrPattern("start"))
+    println("Server", theOscMessage.address(), theOscMessage.addrPattern());
 
   if (theOscMessage.checkAddrPattern("join")) {
     addPlayer(theOscMessage);
@@ -67,11 +68,11 @@ void oscEvent(OscMessage theOscMessage) {
 }
 
 void addPlayer(OscMessage theOscMessage) {
-
+  
   if (connection.size() < player.size()) {
     String name = theOscMessage.get(0).stringValue();
     score.get(connection.size()).playerName = name;
-    
+
     Connection c = new Connection(theOscMessage.address());
     connection.add(c);
   }
@@ -88,19 +89,19 @@ void updatePlayer(OscMessage theOscMessage) {
 }
 
 int discoverPlayer(OscMessage theOscMessage) {
-  
+
   for (int i = 0; i < connection.size(); i++) {
     Connection c = connection.get(i);
-  
+
     if (c.compareIp(theOscMessage))
       return i;
   }
-  
+
   return -1;
 }
 
 void endConnections() {
-  
+
   for (int i = 0; i < connection.size(); i++) {
     connection.get(i).endConnection();
   }

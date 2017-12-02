@@ -52,7 +52,7 @@ void restart() {
   background = new Background();
  
   createPlayers();
-  createConnections();
   createTargets();
   createScores();
+  createConnections();
 }
