@@ -45,7 +45,7 @@ void createConnections() {
     netAddress = new NetAddress("192.168.0." + i, port);
     message = new OscMessage("start");
     osc.send(message, netAddress);
-    delay(1);
+    delay(10);
   }
 }
 
@@ -68,7 +68,7 @@ void oscEvent(OscMessage theOscMessage) {
 }
 
 void addPlayer(OscMessage theOscMessage) {
-  
+
   if (connection.size() < player.size()) {
     String name = theOscMessage.get(0).stringValue();
     score.get(connection.size()).playerName = name;
