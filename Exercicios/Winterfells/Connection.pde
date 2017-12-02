@@ -8,12 +8,15 @@ public class Connection {
   NetAddress netAddress;
 
   public Connection(String ip) {
+    int index = connection.size();
+
     ip = ip.split("/")[1];  // For some reason the ip comes like "/192.168.0.1", so i have to remove the bar
 
     netAddress = new NetAddress(ip, port);
 
     OscMessage message = new OscMessage("id");
-    message.add(connection.size());
+    message.add(index);
+    message.add(player.get(index).rgb);
     osc.send(message, netAddress);
   }
 
@@ -25,7 +28,11 @@ public class Connection {
 
     return false;
   }
-  
+
+  public void endConnection() {
+    OscMessage message = new OscMessage("end");
+    osc.send(message, netAddress);
+  }
 }
 
 void createConnections() {
@@ -39,18 +46,6 @@ void createConnections() {
     message = new OscMessage("start");
     osc.send(message, netAddress);
   }
-
-  //netAddress = new NetAddress("192.168.0.123", port);
-  //connection.add(netAddress);
-  //message = new OscMessage("playerId");
-  //message.add(0);
-  //osc.send(message, connection.get(0));
-
-  //netAddress = new NetAddress("192.168.0.15", port);
-  //connection.add(netAddress);
-  //message = new OscMessage("playerId");
-  //message.add(1);
-  //osc.send(message, connection.get(1));
 }
 
 void createOsc() {
@@ -61,38 +56,52 @@ void createOsc() {
 }
 
 void oscEvent(OscMessage theOscMessage) {
+  if (!theOscMessage.checkAddrPattern("update"))
+    println(theOscMessage.address(), theOscMessage.addrPattern());
 
   if (theOscMessage.checkAddrPattern("join")) {
+    addPlayer(theOscMessage);
+  } else if (theOscMessage.checkAddrPattern("update")) {
+    updatePlayer(theOscMessage);
+  }
+}
+
+void addPlayer(OscMessage theOscMessage) {
+
+  if (connection.size() < player.size()) {
+    String name = theOscMessage.get(0).stringValue();
+    score.get(connection.size()).playerName = name;
     
-    if(connection.size() >= player.size())
-      return;
-      
     Connection c = new Connection(theOscMessage.address());
     connection.add(c);
-    
-  } else if (theOscMessage.checkAddrPattern("update")) {
-    
-    int i = discoverPlayer(theOscMessage);
-    
-    if(i < 0)
-      return;
-      
+  }
+}
+
+void updatePlayer(OscMessage theOscMessage) {
+
+  int i = discoverPlayer(theOscMessage);
+
+  if (i >= 0) {
     float direction = theOscMessage.get(0).floatValue();
     player.get(i).setDirection(direction);
-    
   }
-  
 }
 
 int discoverPlayer(OscMessage theOscMessage) {
   
-  for(int i = 0; i < connection.size(); i++) {
+  for (int i = 0; i < connection.size(); i++) {
     Connection c = connection.get(i);
-    
-    if(c.compareIp(theOscMessage))
+  
+    if (c.compareIp(theOscMessage))
       return i;
-      
   }
   
   return -1;
+}
+
+void endConnections() {
+
+  for (int i = 0; i < connection.size(); i++) {
+    connection.get(i).endConnection();
+  }
 }

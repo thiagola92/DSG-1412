@@ -5,8 +5,8 @@ public class Target {
 
   PVector position;
 
-  public Target(int spawnX, int spawnY) {
-    this.position = new PVector(spawnX, spawnY);
+  public Target() {
+    this.position = new PVector(width/2, 0);
   }
 
   public void draw() {
@@ -33,13 +33,23 @@ public class Target {
     for (int i = 0; i < target.size(); i++) {
       if (target.get(i).position.y < farest) {
         farest = (int)target.get(i).position.y;
+        
+        float startSpawnX = target.get(i).position.x - widthDistanceBetweenTargets;
+        float endSpawnX = target.get(i).position.x + widthDistanceBetweenTargets;
+        
+        if(startSpawnX < 0 && endSpawnX > width) {
+          startSpawnX = 0;
+          endSpawnX = width;
+        } if(startSpawnX < 0) {
+          endSpawnX += abs(startSpawnX);
+          startSpawnX = 0;
+        } else if(endSpawnX > width) {
+          startSpawnX += width - endSpawnX;
+          endSpawnX = width;
+        }
+        
+        spawnPointX = (int)random(startSpawnX, endSpawnX);
 
-        spawnPointX = (int)random(target.get(i).position.x - widthDistanceBetweenTargets, target.get(i).position.x + widthDistanceBetweenTargets);
-
-        if (spawnPointX < 0)
-          spawnPointX = 0;
-        else if (spawnPointX > width)
-          spawnPointX = width;
       }
     }
 
@@ -51,21 +61,12 @@ public class Target {
 }
 
 public void createTargets() {
-  float distanceBetweenTargets = height*(heightDistanceBetweenTargets / numberOfPlayers);
-  
-  int spawnPointX = (int)random(width);
-  int spawnPointY = (int)-distanceBetweenTargets;
 
   for (int i = 0; i < numberOfTargets; i++) {
-    spawnPointX = (int)random(spawnPointX - widthDistanceBetweenTargets, spawnPointX + widthDistanceBetweenTargets);
-    
-    if (spawnPointX < 0)
-      spawnPointX = 0;
-    else if (spawnPointX > width)
-      spawnPointX = width;
-
-    target.add(new Target(spawnPointX, i*spawnPointY));
+    target.add(new Target());
+    target.get(i).respawn();
   }
+  
 }
 
 public void updateTargets() {
@@ -74,6 +75,7 @@ public void updateTargets() {
       target.get(i).update();
       target.get(i).draw();
   }
+  
 }
 
 public void collideTargets() {
@@ -87,4 +89,5 @@ public void collideTargets() {
       }
     }
   }
+  
 }

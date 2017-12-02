@@ -1,38 +1,45 @@
-import netP5.*;
-import oscP5.*;
 import ketai.sensors.*;
 
-KetaiSensor accelerometer;
+KetaiSensor sensor;
 Status status;
+Keyboard keyboard;
 
 int port = 17000;
-String computerIP = "192.168.0.10";
 
 void setup() {
   fullScreen();
-  
+
   createOsc();
-  
-  accelerometer = new KetaiSensor(this);
+
   status = new Status();
+  sensor = new KetaiSensor(this);
+  keyboard = new Keyboard();
   
-  accelerometer.start();
-  
+  sensor.start();
   orientation(LANDSCAPE);  // This last
 }
 
 void draw() {
-  background(0);
-  
-  if(netAddress != null) {
+  background(status.rgb);
+
+  if (netAddress != null) {
     OscMessage message = new OscMessage("update");
     message.add(status.accelerometerY);
     osc.send(message, netAddress);
   }
-  
+
   status.draw();
-  
 }
+
+void mousePressed() {
+  openKeyboard();
+}
+
+
+void keyPressed() {
+  keyboard.writeName();
+}
+
 
 void onAccelerometerEvent(float x, float y, float z) {
   status.accelerometerY = y;

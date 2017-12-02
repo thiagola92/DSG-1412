@@ -36,10 +36,10 @@ void draw() {
 }
 
 void restart() {
-  numberOfPlayers = 2;
+  numberOfPlayers = 3;
 
   numberOfTargets = 20;
-  widthDistanceBetweenTargets = 100; // pixel of screen, use width for all the screen
+  widthDistanceBetweenTargets = width/2; // pixel of screen, use width/2 for all the screen
   heightDistanceBetweenTargets = 0.20; // percentage of screen
   
   port = 17000;
