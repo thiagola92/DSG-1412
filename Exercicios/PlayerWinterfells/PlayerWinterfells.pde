@@ -1,3 +1,6 @@
+// IMPORTANT
+// Sometimes my MOTO X4 stop making connections when changing orientation() or openKeyboard()
+
 import ketai.sensors.*;
 
 KetaiSensor sensor;
@@ -14,9 +17,9 @@ void setup() {
   status = new Status();
   sensor = new KetaiSensor(this);
   keyboard = new Keyboard();
-  
+
   sensor.start();
-  
+
   //orientation(LANDSCAPE);
 }
 
