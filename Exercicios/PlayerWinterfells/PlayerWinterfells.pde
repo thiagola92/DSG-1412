@@ -44,3 +44,11 @@ void keyPressed() {
 void onAccelerometerEvent(float x, float y, float z) {
   status.accelerometerY = y;
 }
+
+void mousePressed () {
+  keyboard.beginKeyboard();
+}
+
+void keyPressed () {
+  keyboard.writing();
+}

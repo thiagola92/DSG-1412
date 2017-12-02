@@ -18,7 +18,7 @@ public class Connection {
     message.add(index);
     message.add(player.get(index).rgb);
     osc.send(message, netAddress);
-  }
+}
 
   public boolean compareIp(OscMessage theOscMessage) {
     String address = theOscMessage.address().split("/")[1];

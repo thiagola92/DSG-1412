@@ -6,7 +6,6 @@ public class Player {
   float jumpDistance = 0.1; // percentage of screen
   float movSpeed = 0.01;  // percentage of screen
   float sensitivy = 2.0; 
-
   color rgb;
 
   boolean playing = false;
