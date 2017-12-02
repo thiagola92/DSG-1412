@@ -4,6 +4,8 @@ import oscP5.*;
 OscP5 osc;
 NetAddress netAddress;
 
+STATE state = STATE.MENU;
+
 void createOsc() {
   if (osc != null)
     osc.dispose();
@@ -12,6 +14,8 @@ void createOsc() {
 }
 
 void oscEvent(OscMessage theOscMessage) {
+  //if (!theOscMessage.checkAddrPattern("update"))
+  //  println(theOscMessage.address(), theOscMessage.addrPattern());
 
   if (theOscMessage.checkAddrPattern("start")) {
     joinGame(theOscMessage.address());
@@ -23,8 +27,9 @@ void oscEvent(OscMessage theOscMessage) {
 }
 
 void joinGame(String ip) {
-  if (status.playerId != -1)
+  if (state == STATE.PLAYING)
     return;
+  state = STATE.PLAYING;
 
   ip = ip.split("/")[1];  // For some reason the ip comes like "/192.168.0.1", so i have to remove the bar
 
@@ -42,6 +47,6 @@ void getInfo(OscMessage theOscMessage) {
 void endGame(OscMessage theOscMessage) {
 
   if (theOscMessage.address().equals("/" + netAddress.address())) {
-    status.playerId = -1;
+    state = STATE.MENU;
   }
 }

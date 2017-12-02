@@ -16,7 +16,8 @@ void setup() {
   keyboard = new Keyboard();
   
   sensor.start();
-  orientation(LANDSCAPE);  // This last
+  
+  //orientation(LANDSCAPE);
 }
 
 void draw() {
@@ -32,7 +33,7 @@ void draw() {
 }
 
 void mousePressed() {
-  openKeyboard();
+  //openKeyboard();
 }
 
 
@@ -43,12 +44,4 @@ void keyPressed() {
 
 void onAccelerometerEvent(float x, float y, float z) {
   status.accelerometerY = y;
-}
-
-void mousePressed () {
-  keyboard.beginKeyboard();
-}
-
-void keyPressed () {
-  keyboard.writing();
 }

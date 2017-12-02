@@ -56,8 +56,8 @@ void createOsc() {
 }
 
 void oscEvent(OscMessage theOscMessage) {
-  if (!theOscMessage.checkAddrPattern("update"))
-    println(theOscMessage.address(), theOscMessage.addrPattern());
+  //if (!theOscMessage.checkAddrPattern("update"))
+  //  println(theOscMessage.address(), theOscMessage.addrPattern());
 
   if (theOscMessage.checkAddrPattern("join")) {
     addPlayer(theOscMessage);
@@ -100,7 +100,7 @@ int discoverPlayer(OscMessage theOscMessage) {
 }
 
 void endConnections() {
-
+  
   for (int i = 0; i < connection.size(); i++) {
     connection.get(i).endConnection();
   }

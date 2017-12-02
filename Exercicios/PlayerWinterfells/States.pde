@@ -1,0 +1,3 @@
+enum STATE {
+  MENU, PLAYING;
+}

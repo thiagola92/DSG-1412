@@ -30,6 +30,9 @@ public class Player {
 
   public void update() {
     
+    if(alive == false)
+      return;
+    
     if (destination.x > position.x && destination.x - position.x > velocity.x)
       position.x += velocity.x;
     else if (destination.x < position.x && position.x - destination.x > velocity.x)
