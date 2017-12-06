@@ -45,7 +45,7 @@ void createConnections() {
     netAddress = new NetAddress("192.168.0." + i, port);
     message = new OscMessage("start");
     osc.send(message, netAddress);
-    delay(10);
+    delay(50);
   }
 }
 

@@ -52,7 +52,11 @@ public class Player {
 
   public boolean collision(int x, int y, int radius) {
     
+    // Comment to hide hitbox
+    fill(0, 0, 0, 0);
+    stroke(0, 255, 0);
     ellipse(x, y, 2*radius, 2*radius);
+    noStroke();
 
     float distanceX = abs(position.x - x);
     float distanceY = abs(position.y - y);

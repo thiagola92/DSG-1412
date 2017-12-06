@@ -11,7 +11,7 @@ public class Target {
 
   public void draw() {
     fill(colors.target);
-    
+
     ellipse(position.x, position.y, 2*radius, 2*radius);
   }
 
@@ -21,6 +21,12 @@ public class Target {
     } else {
       position.y += gravity;
     }
+  }
+
+  public void collision(int index) {
+    respawn();
+    player.get(index).jump();
+    score.get(index).increment();
   }
 
   public void respawn() {
@@ -33,28 +39,28 @@ public class Target {
     for (int i = 0; i < target.size(); i++) {
       if (target.get(i).position.y < farest) {
         farest = (int)target.get(i).position.y;
-        
+
         float startSpawnX = target.get(i).position.x - widthDistanceBetweenTargets;
         float endSpawnX = target.get(i).position.x + widthDistanceBetweenTargets;
-        
-        if(startSpawnX < 0 && endSpawnX > width) {
+
+        if (startSpawnX < 0 && endSpawnX > width) {
           startSpawnX = 0;
           endSpawnX = width;
-        } if(startSpawnX < 0) {
+        } 
+        if (startSpawnX < 0) {
           endSpawnX += abs(startSpawnX);
           startSpawnX = 0;
-        } else if(endSpawnX > width) {
+        } else if (endSpawnX > width) {
           startSpawnX += width - endSpawnX;
           endSpawnX = width;
         }
-        
-        spawnPointX = (int)random(startSpawnX, endSpawnX);
 
+        spawnPointX = (int)random(startSpawnX, endSpawnX);
       }
     }
 
     spawnPointY += farest;
-    
+
     position.x = spawnPointX;
     position.y = spawnPointY;
   }
@@ -66,16 +72,20 @@ public void createTargets() {
     target.add(new Target());
     target.get(i).respawn();
   }
+
+  target.add(new TriangleTarget());
+  target.get(target.size()-1).respawn();
   
+  target.add(new SquareTarget());
+  target.get(target.size()-1).respawn();
 }
 
 public void updateTargets() {
 
   for (int i = 0; i < target.size(); i++) {
-      target.get(i).update();
-      target.get(i).draw();
+    target.get(i).update();
+    target.get(i).draw();
   }
-  
 }
 
 public void collideTargets() {
@@ -83,11 +93,8 @@ public void collideTargets() {
   for (int i = 0; i < player.size(); i++) {
     for (int j = 0; j < target.size(); j++) {
       if (player.get(i).collision((int)target.get(j).position.x, (int)target.get(j).position.y, target.get(j).radius)) {
-        target.get(j).respawn();
-        player.get(i).jump();
-        score.get(i).increment();
+        target.get(j).collision(i);
       }
     }
   }
-  
 }
