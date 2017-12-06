@@ -48,5 +48,7 @@ void endGame(OscMessage theOscMessage) {
 
   if (theOscMessage.address().equals("/" + netAddress.address())) {
     state = STATE.MENU;
+    
+    status.rgb = color(0);
   }
 }
