@@ -91,10 +91,17 @@ public void updateTargets() {
 public void collideTargets() {
 
   for (int i = 0; i < player.size(); i++) {
+    if(player.get(i).alive == false)
+      continue;
+      
     for (int j = 0; j < target.size(); j++) {
-      if (player.get(i).collision((int)target.get(j).position.x, (int)target.get(j).position.y, target.get(j).radius)) {
+      
+      int x = (int)target.get(j).position.x;
+      int y = (int)target.get(j).position.y;
+      int radius = target.get(j).radius;
+      
+      if (player.get(i).collision(x, y, radius))
         target.get(j).collision(i);
-      }
     }
   }
 }

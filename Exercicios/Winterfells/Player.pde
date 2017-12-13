@@ -29,10 +29,10 @@ public class Player {
   }
 
   public void update() {
-    
-    if(alive == false)
+
+    if (alive == false)
       return;
-    
+
     if (destination.x > position.x && destination.x - position.x > velocity.x)
       position.x += velocity.x;
     else if (destination.x < position.x && position.x - destination.x > velocity.x)
@@ -43,15 +43,13 @@ public class Player {
     else if (destination.y < position.y && position.y - destination.y > velocity.y)
       position.y -= velocity.y;
 
-    if (position.x >= destination.x - velocity.x && position.x <= destination.x + velocity.x) {
-      if (position.y >= destination.y - velocity.y && position.y <= destination.y + velocity.y)
-        onDestination();
-    }
-    
+
+    if (position.y >= destination.y - velocity.y && position.y <= destination.y + velocity.y)
+      onDestination();
   }
 
   public boolean collision(int x, int y, int radius) {
-    
+
     // Comment to hide hitbox
     fill(0, 0, 0, 0);
     stroke(0, 255, 0);
@@ -66,10 +64,10 @@ public class Player {
       return true;
 
     return false;
-    
   }
 
   public void jump() {
+
     velocity.y = jumpSpeed;
 
     int jump = (int)-(height*jumpDistance);
@@ -84,13 +82,12 @@ public class Player {
   }
 
   public void fall() {
-    
+
     velocity.y = gravity;
 
     if (playing) {
       destination.y = height + 30;
     }
-    
   }
 
   public void onDestination() {
@@ -101,7 +98,6 @@ public class Player {
     } else {
       fall();
     }
-    
   }
 
   public void setDirection (float accelerometer) {
@@ -113,9 +109,7 @@ public class Player {
     } else {
       destination.x = position.x;
     }
-    
   }
-  
 }
 
 void createPlayers() {
@@ -124,7 +118,6 @@ void createPlayers() {
     player.add(new Player());
     player.get(i).rgb = colors.player[i];
   }
-  
 }
 
 void updatePlayers() {
@@ -133,7 +126,6 @@ void updatePlayers() {
     player.get(i).update();
     player.get(i).draw();
   }
-  
 }
 
 void checkGameover() {
@@ -145,7 +137,7 @@ void checkGameover() {
   }
 
   endConnections();
-  
+
   state = STATE.MENU;
 }
 
