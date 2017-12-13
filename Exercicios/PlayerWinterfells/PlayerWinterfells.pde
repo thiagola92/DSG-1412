@@ -20,7 +20,7 @@ void setup() {
 
   sensor.start();
 
-  //orientation(LANDSCAPE);
+  orientation(LANDSCAPE);
 }
 
 void draw() {
@@ -36,7 +36,7 @@ void draw() {
 }
 
 void mousePressed() {
-  //openKeyboard();
+  status.mousePressed();
 }
 
 

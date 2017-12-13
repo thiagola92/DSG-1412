@@ -1,6 +1,6 @@
 public class Score {
 
-  String playerName = "Player";
+  String playerName = "NULL";
   int points = 0;
   int size = 15;
   
