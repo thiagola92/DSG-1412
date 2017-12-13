@@ -78,6 +78,9 @@ public void createTargets() {
   
   target.add(new SquareTarget());
   target.get(target.size()-1).respawn();
+  
+  target.add(new CrystalTarget());
+  target.get(target.size()-1).respawn();
 }
 
 public void updateTargets() {

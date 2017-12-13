@@ -18,7 +18,7 @@ public class Status {
     fill(100);
     rect(width/2, 0, width/2, 40 * displayDensity);
     fill(255);
-    text("Change name", width/2, 40 * displayDensity);
+    text(" Change name", width/2, 40 * displayDensity);
 
     text(warning, 0, 160 * displayDensity);
   }

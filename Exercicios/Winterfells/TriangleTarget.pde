@@ -12,6 +12,7 @@ public class TriangleTarget extends Target {
       if(player.get(index).position.y < player.get(i).position.y) {
         player.get(i).alive = true;
         player.get(i).position.y = player.get(index).position.y;
+        player.get(i).position.x = player.get(index).position.x;
       }
     }
     
