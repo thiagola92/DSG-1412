@@ -147,12 +147,12 @@ String getHighScore() {
     return "";
 
   int highScore = 0;
-  int playerName = 0;
+  String playerName = "";
 
   for (int i = 0; i < player.size(); i++) {
     if (score.get(i).points > highScore) {
       highScore = score.get(i).points;
-      playerName = i;
+      playerName = score.get(i).playerName;
     }
   }
 

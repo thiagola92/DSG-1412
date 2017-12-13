@@ -15,23 +15,23 @@ public class Stage {
   public void nextLevel() {
 
     if (level == 0 && bestScore >= 10) {
-      //targetsGravityUp();
+      targetsGravityUp();
 
       level = 1;
     } else if (level == 1 && bestScore >= 20) {
-      //playersGravityUp();
+      playersGravityUp();
 
       level = 2;
     } else if (level == 2 && bestScore >= 30) {
-      //numberOfTargetsDown();
+      numberOfTargetsDown();
 
       level = 3;
     } else if (level == 3 && bestScore >= 40) {
-      //heightDistanceBetweenTargetsUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 4;
     } else if (level == 3 && bestScore >= 40) {
-      //heightDistanceBetweenTargetsUp();
+      heightDistanceBetweenTargetsUp();
 
       level = 4;
     } 

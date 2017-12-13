@@ -13,7 +13,6 @@ void playing() {
 
   collideTargets();
 
-  println("Player ", 1, player.get(1).velocity.y, player.get(1).alive);
 }
 
 void menu() {
