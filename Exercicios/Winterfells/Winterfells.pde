@@ -36,7 +36,7 @@ void draw() {
 }
 
 void restart() {
-  numberOfPlayers = 3;
+  numberOfPlayers = 2;
 
   numberOfTargets = 20;
   widthDistanceBetweenTargets = width/2; // pixel of screen, use width/2 for all the screen
