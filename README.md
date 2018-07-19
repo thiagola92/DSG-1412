@@ -2,6 +2,21 @@
 
 Interfaces Físicas e Lógicas
 
+## About
+Esse repositório armazena varios miniprojetos, alguns deles feitos para a matéria e outros não.  
+* **CameraTest**: Exemplo de como usar camera com Processing  
+* **Connection/Wifi**: Exemplo de como conectar Android com o Computador (na mesma rede)  
+* **GameBase**: Uma biblioteca básica que eu fiz para fazer jogos
+* **[HateLag](/HateLag)**: Simulador de lag
+* **Pew_pew**: Jogo de destruir misseis, criado usando GameBase
+* **PlayerWinterfells**: Controle no celular Android para o jogo Winterfells
+* **Pong**: O jogo Pong mas com modos diferentes de jogar
+* **Simulator**: Simulando uma tela de celular **(incompleto)**
+* **[Winterfells](/Winterfells)**: Jogo baseado em outro jogo em flash antigo
+* **WinterfellsB**: Remake do Winterfells **(incompleto)**
+
+
+
 ## Processing
 [**Processing**](https://www.processing.org/) é uma IDE que iremos usar para aprender a programar.
 
