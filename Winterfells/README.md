@@ -1,4 +1,4 @@
-**Youtube**: https://www.youtube.com/watch?v=l5mj6_ScztI
+[![youtube link](https://i.ibb.co/7SsMZbR/https-i-ytimg-com-vi-l5mj6-Sczt-I-maxresdefault.jpg)](https://www.youtube.com/watch?v=l5mj6_ScztI "youtube link")
 
 # About
 Winterfells é um jogo baseado no Winterbells, jogo em flash do [Ferry Harlim](http://www.ferryhalim.com/).  
